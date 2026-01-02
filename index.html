@@ -11,6 +11,55 @@
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .projects-carousel {
+      display: grid;
+      gap: 16px;
+    }
+
+    .projects-controls {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .projects-controls button {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid #dbe4ff;
+      background: #fff;
+      color: #0f1d2e;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(13, 35, 82, 0.08);
+    }
+
+    .projects-controls button:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+
+    .projects-track {
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+      scrollbar-width: thin;
+    }
+
+    .projects-track .card {
+      scroll-snap-align: start;
+      flex: 0 0 clamp(240px, 38vw, 360px);
+    }
+
+    @media (max-width: 600px) {
+      .projects-track .card {
+        flex-basis: 80vw;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -248,6 +297,53 @@
       });
     };
 
+    const setupProjectsCarousel = () => {
+      const cardsContainer = document.querySelector("[data-project-cards]");
+      if (!cardsContainer || cardsContainer.closest(".projects-carousel")) return;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "projects-carousel";
+
+      const controls = document.createElement("div");
+      controls.className = "projects-controls";
+
+      const prevButton = document.createElement("button");
+      prevButton.type = "button";
+      prevButton.setAttribute("aria-label", "Scroll projects left");
+      prevButton.textContent = "\u2039";
+
+      const nextButton = document.createElement("button");
+      nextButton.type = "button";
+      nextButton.setAttribute("aria-label", "Scroll projects right");
+      nextButton.textContent = "\u203A";
+
+      controls.append(prevButton, nextButton);
+      cardsContainer.classList.add("projects-track");
+
+      const parent = cardsContainer.parentElement;
+      parent.insertBefore(wrapper, cardsContainer);
+      wrapper.append(cardsContainer, controls);
+
+      const updateButtons = () => {
+        const maxScroll = cardsContainer.scrollWidth - cardsContainer.clientWidth;
+        const atStart = cardsContainer.scrollLeft <= 0;
+        const atEnd = cardsContainer.scrollLeft >= maxScroll - 1;
+        prevButton.disabled = atStart;
+        nextButton.disabled = atEnd;
+      };
+
+      const scrollByAmount = (direction) => {
+        const amount = Math.min(cardsContainer.clientWidth * 0.9, 480);
+        cardsContainer.scrollBy({ left: amount * direction, behavior: "smooth" });
+      };
+
+      prevButton.addEventListener("click", () => scrollByAmount(-1));
+      nextButton.addEventListener("click", () => scrollByAmount(1));
+      cardsContainer.addEventListener("scroll", updateButtons, { passive: true });
+      window.addEventListener("resize", updateButtons);
+      updateButtons();
+    };
+
     const initProjectModals = () => {
       const closeModal = (modal) => {
         modal.classList.remove("is-open");
@@ -296,6 +392,7 @@
     loadSections()
       .then(() => {
         renderProjects();
+        setupProjectsCarousel();
         initProjectModals();
       })
       .catch((error) => console.error(error));
