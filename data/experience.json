@@ -24,7 +24,7 @@
     "title": "Werkstudent",
     "company": "nanoDUST GmbH",
     "summary": [
-      "Datenverarbeitung mit Pandas und Numpy",
+      "Datenverarbeitung mit Pandas und Numpy.",
       "Software-Entwicklung des Sensormoduls (Python): Sensor Kommunikation, Linux, State machine.",
       "Entwicklung des GUI in einem HMI Bildschirm zur Live-Visualisierung und Steuerung von Gerätedaten."
     ]
