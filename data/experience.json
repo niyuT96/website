@@ -4,8 +4,8 @@
     "title": "R&D Test- und Entwicklungsingenieur/in",
     "company": "nanoDUST GmbH",
     "summary": [
-      "Software-Entwicklung des Sensormoduls (Python).",
-      "Erweiterung der GUI-Anwendung mit PySide und Realisierung der Live-Visualisierung von Geräte Data und Geräte-steuerung.",
+      "Software-Entwicklung des Sensormoduls (Python): SIM Karte, IoT Core (AWS)",
+      "GUI zur Live-Visualisierung und Steuerung von Gerätedaten.",
       "Automatisierte Übertragung in die Cloud-Datenbank."
     ]
   },
@@ -20,12 +20,13 @@
     ]
   },
   {
-    "time": "2016 - 2018",
-    "title": "UX Designer",
-    "company": "Glow Market",
+    "time": "02/2024 - 08/2024",
+    "title": "Werkstudent",
+    "company": "nanoDUST GmbH",
     "summary": [
-      "Created growth experiments that increased conversion by 22%.",
-      "Partnered with research to validate new onboarding flows."
+      "Datenverarbeitung mit Pandas und Numpy",
+      "Software-Entwicklung des Sensormoduls (Python): Sensor Kommunikation, Linux, State machine.",
+      "Entwicklung des GUI in einem HMI Bildschirm zur Live-Visualisierung und Steuerung von Gerätedaten."
     ]
   }
 ]
