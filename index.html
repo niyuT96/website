@@ -11,55 +11,6 @@
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .projects-carousel {
-      display: grid;
-      gap: 16px;
-    }
-
-    .projects-controls {
-      display: flex;
-      gap: 10px;
-      justify-content: flex-end;
-    }
-
-    .projects-controls button {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 1px solid #dbe4ff;
-      background: #fff;
-      color: #0f1d2e;
-      font-size: 1.1rem;
-      cursor: pointer;
-      box-shadow: 0 8px 18px rgba(13, 35, 82, 0.08);
-    }
-
-    .projects-controls button:disabled {
-      opacity: 0.4;
-      cursor: default;
-    }
-
-    .projects-track {
-      display: flex;
-      gap: 22px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 8px;
-      scrollbar-width: thin;
-    }
-
-    .projects-track .card {
-      scroll-snap-align: start;
-      flex: 0 0 clamp(240px, 38vw, 360px);
-    }
-
-    @media (max-width: 600px) {
-      .projects-track .card {
-        flex-basis: 80vw;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -67,66 +18,66 @@
     <header class="hero" id="home">
       <div class="hero-illustration" aria-hidden="true"></div>
       <nav class="nav">
-        <div class="logo">NY</div>
+        <div class="logo" data-site-text="logo">NY</div>
         <div class="nav-links">
-          <a href="#projects">Projects</a>
-          <a href="#experience">Experience</a>
-          <a href="#education">Education</a>
-          <a href="#skills">Languages & Skills</a>
-          <a href="#contact">Contacts</a>
+          <a href="#projects" data-site-text="navProjects">Projects</a>
+          <a href="#experience" data-site-text="navExperience">Experience</a>
+          <a href="#education" data-site-text="navEducation">Education</a>
+          <a href="#skills" data-site-text="navSkills">Languages & Skills</a>
+          <a href="#contact" data-site-text="navContacts">Contacts</a>
         </div>
       </nav>
       <div class="hero-content">
         <div class="hero-text">
-          <p class="eyebrow">Hello, I'm Niyu Tong</p>
-          <h1>Web Developer & Designer</h1>
-          <p class="lead">
+          <p class="eyebrow" data-site-text="heroEyebrow">Hello, I'm Niyu Tong</p>
+          <h1 data-site-text="heroTitle">Web Developer & Designer</h1>
+          <p class="lead" data-site-text="heroLead">
             I build calm, story-driven interfaces that turn complex ideas into crisp digital
             experiences.
           </p>
           <div class="hero-actions">
-            <a class="btn primary" href="#projects">View My Work</a>
-            <a class="btn ghost" href="#contact">Get In Touch</a>
+            <a class="btn primary" href="#projects" data-site-text="heroCtaPrimary">View My Work</a>
+            <a class="btn ghost" href="#contact" data-site-text="heroCtaSecondary">Get In Touch</a>
           </div>
           <div class="hero-metrics">
             <div>
-              <strong>8+</strong>
-              <span>Years Experience</span>
+              <strong data-site-text="heroMetricOneValue">8+</strong>
+              <span data-site-text="heroMetricOneLabel">Years Experience</span>
             </div>
             <div>
-              <strong>42</strong>
-              <span>Projects Delivered</span>
+              <strong data-site-text="heroMetricTwoValue">42</strong>
+              <span data-site-text="heroMetricTwoLabel">Projects Delivered</span>
             </div>
             <div>
-              <strong>12</strong>
-              <span>Product Launches</span>
+              <strong data-site-text="heroMetricThreeValue">12</strong>
+              <span data-site-text="heroMetricThreeLabel">Product Launches</span>
             </div>
           </div>
         </div>
         <div class="hero-card">
           <div class="profile">
-            <div class="avatar">NY</div>
+            <div class="avatar" data-site-text="heroAvatar">NY</div>
             <div>
-              <p class="name">Niyu Tong</p>
-              <p class="role">Design + Engineering</p>
+              <p class="name" data-site-text="heroName">Niyu Tong</p>
+              <p class="role" data-site-text="heroRole">Design + Engineering</p>
             </div>
           </div>
           <div class="card-grid">
             <div class="mini-card">
-              <p>Design System</p>
-              <span>2024</span>
+              <p data-site-text="heroMiniCardOneLabel">Design System</p>
+              <span data-site-text="heroMiniCardOneValue">2024</span>
             </div>
             <div class="mini-card">
-              <p>Fintech App</p>
-              <span>Live</span>
+              <p data-site-text="heroMiniCardTwoLabel">Fintech App</p>
+              <span data-site-text="heroMiniCardTwoValue">Live</span>
             </div>
             <div class="mini-card">
-              <p>Startup Brand</p>
-              <span>Phase 2</span>
+              <p data-site-text="heroMiniCardThreeLabel">Startup Brand</p>
+              <span data-site-text="heroMiniCardThreeValue">Phase 2</span>
             </div>
             <div class="mini-card">
-              <p>AI Studio</p>
-              <span>Concept</span>
+              <p data-site-text="heroMiniCardFourLabel">AI Studio</p>
+              <span data-site-text="heroMiniCardFourValue">Concept</span>
             </div>
           </div>
         </div>
@@ -141,364 +92,48 @@
 
     <section class="section contact" id="contact">
       <div class="section-head">
-        <h2>Contacts</h2>
-        <p>Let's build something elegant and efficient together.</p>
+        <h2 data-site-text="contactTitle">Contacts</h2>
+        <p data-site-text="contactLead">Let's build something elegant and efficient together.</p>
       </div>
       <div class="contact-grid">
         <div class="contact-card">
-          <h3>Get in touch</h3>
-          <p class="muted">Prefer async? Drop a note and I'll reply within 24 hours.</p>
+          <h3 data-site-text="contactCardTitle">Get in touch</h3>
+          <p class="muted" data-site-text="contactCardLead">Prefer async? Drop a note and I'll reply within 24 hours.</p>
           <form class="form">
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <textarea rows="4" placeholder="Message"></textarea>
-            <button class="btn primary" type="button">Send Message</button>
+            <input type="text" placeholder="Name" data-site-placeholder="contactNamePlaceholder" />
+            <input type="email" placeholder="Email" data-site-placeholder="contactEmailPlaceholder" />
+            <textarea rows="4" placeholder="Message" data-site-placeholder="contactMessagePlaceholder"></textarea>
+            <button class="btn primary" type="button" data-site-text="contactButton">Send Message</button>
           </form>
         </div>
         <div class="contact-card">
-          <h3>Availability</h3>
-          <p class="muted">Currently booking for Q2 2025 collaborations.</p>
+          <h3 data-site-text="availabilityTitle">Availability</h3>
+          <p class="muted" data-site-text="availabilityLead">Currently booking for Q2 2025 collaborations.</p>
           <div class="availability">
             <div>
-              <span class="label">Location</span>
-              <strong>Seattle, WA</strong>
+              <span class="label" data-site-text="availabilityLocationLabel">Location</span>
+              <strong data-site-text="availabilityLocationValue">Seattle, WA</strong>
             </div>
             <div>
-              <span class="label">Email</span>
-              <strong>hello@janedoe.studio</strong>
+              <span class="label" data-site-text="availabilityEmailLabel">Email</span>
+              <strong data-site-text="availabilityEmailValue">hello@janedoe.studio</strong>
             </div>
             <div>
-              <span class="label">Phone</span>
-              <strong>+1 (555) 109-0021</strong>
+              <span class="label" data-site-text="availabilityPhoneLabel">Phone</span>
+              <strong data-site-text="availabilityPhoneValue">+1 (555) 109-0021</strong>
             </div>
           </div>
-          <a class="btn ghost" href="#projects">Download Resume</a>
+          <a class="btn ghost" href="#projects" data-site-text="availabilityCta">Download Resume</a>
         </div>
       </div>
     </section>
 
     <footer class="footer">
-      <p>(c) 2025 Niyu Tong. Crafted with clarity and intention.</p>
+      <p data-site-text="footerText">(c) 2025 Niyu Tong. Crafted with clarity and intention.</p>
     </footer>
   </div>
 
-  <script>
-    const loadSections = async () => {
-      const includes = document.querySelectorAll("[data-include]");
-      const tasks = Array.from(includes).map(async (section) => {
-        const response = await fetch(section.dataset.include);
-        if (!response.ok) {
-          throw new Error(`Failed to load ${section.dataset.include}`);
-        }
-        const html = await response.text();
-        section.outerHTML = html;
-      });
-
-      await Promise.all(tasks);
-    };
-
-    const loadJson = async (path) => {
-      const response = await fetch(path);
-      if (!response.ok) {
-        throw new Error(`Failed to load ${path}`);
-      }
-      return response.json();
-    };
-
-    const renderProjects = (projects) => {
-      const cardsContainer = document.querySelector("[data-project-cards]");
-      const modalsContainer = document.querySelector("[data-project-modals]");
-      if (!cardsContainer || !modalsContainer) return;
-
-      cardsContainer.innerHTML = "";
-      modalsContainer.innerHTML = "";
-
-      (projects || []).forEach((project) => {
-        if (!project || !project.id) return;
-
-        const card = document.createElement("article");
-        card.className = "card project-card";
-        card.dataset.modal = `project-${project.id}`;
-        card.setAttribute("role", "button");
-        card.tabIndex = 0;
-
-        const image = document.createElement("img");
-        image.className = "project-image";
-        image.src = project.preview || "";
-        image.alt = project.previewAlt || `${project.title || "Project"} preview`;
-        card.appendChild(image);
-
-        const cardTop = document.createElement("div");
-        cardTop.className = "card-top";
-
-        const tag = document.createElement("span");
-        tag.className = "tag";
-        tag.textContent = project.tag || "";
-
-        const meta = document.createElement("span");
-        meta.className = "meta";
-        meta.textContent = project.meta || "";
-
-        cardTop.append(tag, meta);
-        card.appendChild(cardTop);
-
-        const title = document.createElement("h3");
-        title.textContent = project.title || "";
-
-        const summary = document.createElement("p");
-        summary.textContent = project.summary || "";
-
-        card.append(title, summary);
-        cardsContainer.appendChild(card);
-
-        const modal = document.createElement("div");
-        modal.className = "modal";
-        modal.id = `project-${project.id}`;
-        modal.setAttribute("role", "dialog");
-        modal.setAttribute("aria-modal", "true");
-        modal.setAttribute("aria-labelledby", `project-${project.id}-title`);
-
-        const panel = document.createElement("div");
-        panel.className = "modal-panel";
-
-        const closeButton = document.createElement("button");
-        closeButton.className = "modal-close";
-        closeButton.type = "button";
-        closeButton.setAttribute("aria-label", "Close dialog");
-        closeButton.innerHTML = "&times;";
-
-        const kicker = document.createElement("p");
-        kicker.className = "modal-kicker";
-        kicker.textContent = project.tag || "";
-
-        const modalTitle = document.createElement("h3");
-        modalTitle.id = `project-${project.id}-title`;
-        modalTitle.textContent = project.title || "";
-
-        const details = document.createElement("p");
-        details.className = "muted";
-        details.textContent = project.details || "";
-
-        const list = document.createElement("ul");
-        list.className = "modal-list";
-
-        (project.list || []).forEach((item) => {
-          const listItem = document.createElement("li");
-          listItem.textContent = item;
-          list.appendChild(listItem);
-        });
-
-        panel.append(closeButton, kicker, modalTitle, details, list);
-        modal.appendChild(panel);
-        modalsContainer.appendChild(modal);
-      });
-    };
-
-    const renderExperience = (experiences) => {
-      const timeline = document.querySelector("[data-experience-timeline]");
-      if (!timeline) return;
-
-      timeline.innerHTML = "";
-
-      (experiences || []).forEach((experience) => {
-        if (!experience) return;
-
-        const item = document.createElement("div");
-        item.className = "timeline-item";
-
-        const time = document.createElement("div");
-        time.className = "time";
-        time.textContent = experience.time || "";
-
-        const content = document.createElement("div");
-
-        const title = document.createElement("h3");
-        title.textContent = experience.title || "";
-
-        const company = document.createElement("p");
-        company.textContent = experience.company || "";
-
-        const summaryLines = Array.isArray(experience.summary)
-          ? experience.summary
-          : String(experience.summary || "").split(/\r?\n+/).filter(Boolean);
-
-        content.append(title, company);
-        summaryLines.forEach((line) => {
-          const summary = document.createElement("p");
-          summary.className = "muted";
-          summary.textContent = line;
-          content.appendChild(summary);
-        });
-        item.append(time, content);
-        timeline.appendChild(item);
-      });
-    };
-
-    const renderSkills = (groups) => {
-      const cardsContainer = document.querySelector("[data-skills-cards]");
-      if (!cardsContainer) return;
-
-      cardsContainer.innerHTML = "";
-
-      (groups || []).forEach((group) => {
-        if (!group) return;
-
-        const card = document.createElement("article");
-        card.className = "card skills-card";
-
-        const title = document.createElement("h3");
-        title.textContent = group.title || "";
-
-        const list = document.createElement("ul");
-        (group.items || []).forEach((item) => {
-          const listItem = document.createElement("li");
-          listItem.textContent = item;
-          list.appendChild(listItem);
-        });
-
-        card.append(title, list);
-        cardsContainer.appendChild(card);
-      });
-    };
-
-    const renderEducation = (items) => {
-      const list = document.querySelector("[data-education-list]");
-      if (!list) return;
-
-      list.innerHTML = "";
-
-      (items || []).forEach((item) => {
-        if (!item) return;
-
-        const entry = document.createElement("div");
-
-        const degree = document.createElement("h3");
-        degree.textContent = item.degree || "";
-
-        const school = document.createElement("p");
-        school.textContent = item.school || "";
-
-        const period = document.createElement("p");
-        period.className = "muted";
-        period.textContent = item.period || "";
-
-        entry.append(degree, school, period);
-        list.appendChild(entry);
-      });
-    };
-
-    const setupProjectsCarousel = () => {
-      const cardsContainer = document.querySelector("[data-project-cards]");
-      if (!cardsContainer || cardsContainer.closest(".projects-carousel")) return;
-
-      const wrapper = document.createElement("div");
-      wrapper.className = "projects-carousel";
-
-      const controls = document.createElement("div");
-      controls.className = "projects-controls";
-
-      const prevButton = document.createElement("button");
-      prevButton.type = "button";
-      prevButton.setAttribute("aria-label", "Scroll projects left");
-      prevButton.textContent = "\u2039";
-
-      const nextButton = document.createElement("button");
-      nextButton.type = "button";
-      nextButton.setAttribute("aria-label", "Scroll projects right");
-      nextButton.textContent = "\u203A";
-
-      controls.append(prevButton, nextButton);
-      cardsContainer.classList.add("projects-track");
-
-      const parent = cardsContainer.parentElement;
-      parent.insertBefore(wrapper, cardsContainer);
-      wrapper.append(cardsContainer, controls);
-
-      const updateButtons = () => {
-        const maxScroll = cardsContainer.scrollWidth - cardsContainer.clientWidth;
-        const atStart = cardsContainer.scrollLeft <= 0;
-        const atEnd = cardsContainer.scrollLeft >= maxScroll - 1;
-        prevButton.disabled = atStart;
-        nextButton.disabled = atEnd;
-      };
-
-      const scrollByAmount = (direction) => {
-        const amount = Math.min(cardsContainer.clientWidth * 0.9, 480);
-        cardsContainer.scrollBy({ left: amount * direction, behavior: "smooth" });
-      };
-
-      prevButton.addEventListener("click", () => scrollByAmount(-1));
-      nextButton.addEventListener("click", () => scrollByAmount(1));
-      cardsContainer.addEventListener("scroll", updateButtons, { passive: true });
-      window.addEventListener("resize", updateButtons);
-      updateButtons();
-    };
-
-    const initProjectModals = () => {
-      const closeModal = (modal) => {
-        modal.classList.remove("is-open");
-        document.body.classList.remove("no-scroll");
-      };
-
-      document.addEventListener("click", (event) => {
-        const trigger = event.target.closest("[data-modal]");
-        if (!trigger) return;
-        const modal = document.getElementById(trigger.dataset.modal);
-        if (!modal) return;
-        modal.classList.add("is-open");
-        document.body.classList.add("no-scroll");
-      });
-
-      document.querySelectorAll(".modal").forEach((modal) => {
-        const closeButton = modal.querySelector(".modal-close");
-        if (closeButton) {
-          closeButton.addEventListener("click", () => closeModal(modal));
-        }
-
-        modal.addEventListener("click", (event) => {
-          if (event.target === modal) {
-            closeModal(modal);
-          }
-        });
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          const trigger = event.target.closest("[data-modal]");
-          if (!trigger) return;
-          event.preventDefault();
-          const modal = document.getElementById(trigger.dataset.modal);
-          if (!modal) return;
-          modal.classList.add("is-open");
-          document.body.classList.add("no-scroll");
-          return;
-        }
-        if (event.key !== "Escape") return;
-        const openModal = document.querySelector(".modal.is-open");
-        if (openModal) closeModal(openModal);
-      });
-    };
-
-    const initPage = async () => {
-      await loadSections();
-
-      const [projects, experiences, skills, education] = await Promise.all([
-        loadJson("data/projects.json"),
-        loadJson("data/experience.json"),
-        loadJson("data/skills.json"),
-        loadJson("data/education.json")
-      ]);
-
-      renderProjects(projects);
-      renderExperience(experiences);
-      renderSkills(skills);
-      renderEducation(education);
-      setupProjectsCarousel();
-      initProjectModals();
-    };
-
-    initPage().catch((error) => console.error(error));
-  </script>
+  <script src="scripts.js" defer></script>
 </body>
 
 </html>

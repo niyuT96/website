@@ -14,3 +14,7 @@ Skills
 Education
 - file: data/education.json
 - fields: degree, school, period
+
+Site
+- file: data/site.json
+- fields: pageTitle, logo, navProjects, navExperience, navEducation, navSkills, navContacts, hero*, contact*, availability*, footerText
