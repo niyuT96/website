@@ -3,22 +3,18 @@
     <h2>Languages & Skills</h2>
     <p>Balanced craft across product strategy, design systems, and scalable engineering.</p>
   </div>
-  <div class="cards">
-    <article class="card skills-card">
-      <h3>Languages</h3>
-      <ul>
-        <li>Chinese</li>
-        <li>English</li>
-        <li>Japanese</li>
-      </ul>
-    </article>
-    <article class="card skills-card">
-      <h3>Programming Languages</h3>
-      <ul>
-        <li>HTML + CSS</li>
-        <li>JavaScript</li>
-        <li>Python</li>
-      </ul>
-    </article>
-  </div>
+  <div class="cards" data-skills-cards></div>
 </section>
+
+<script type="application/json" id="skills-data">
+[
+  {
+    "title": "Languages",
+    "items": ["Chinese", "English", "Japanese"]
+  },
+  {
+    "title": "Programming Languages",
+    "items": ["HTML + CSS", "JavaScript", "Python"]
+  }
+]
+</script>

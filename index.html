@@ -297,6 +297,126 @@
       });
     };
 
+    const renderExperience = () => {
+      const dataEl = document.getElementById("experience-data");
+      if (!dataEl) return;
+      let experiences = [];
+
+      try {
+        experiences = JSON.parse(dataEl.textContent);
+      } catch (error) {
+        console.error("Invalid experience data", error);
+        return;
+      }
+
+      const timeline = document.querySelector("[data-experience-timeline]");
+      if (!timeline) return;
+
+      timeline.innerHTML = "";
+
+      experiences.forEach((experience) => {
+        if (!experience) return;
+
+        const item = document.createElement("div");
+        item.className = "timeline-item";
+
+        const time = document.createElement("div");
+        time.className = "time";
+        time.textContent = experience.time || "";
+
+        const content = document.createElement("div");
+
+        const title = document.createElement("h3");
+        title.textContent = experience.title || "";
+
+        const company = document.createElement("p");
+        company.textContent = experience.company || "";
+
+        const summary = document.createElement("p");
+        summary.className = "muted";
+        summary.textContent = experience.summary || "";
+
+        content.append(title, company, summary);
+        item.append(time, content);
+        timeline.appendChild(item);
+      });
+    };
+
+    const renderSkills = () => {
+      const dataEl = document.getElementById("skills-data");
+      if (!dataEl) return;
+      let groups = [];
+
+      try {
+        groups = JSON.parse(dataEl.textContent);
+      } catch (error) {
+        console.error("Invalid skills data", error);
+        return;
+      }
+
+      const cardsContainer = document.querySelector("[data-skills-cards]");
+      if (!cardsContainer) return;
+
+      cardsContainer.innerHTML = "";
+
+      groups.forEach((group) => {
+        if (!group) return;
+
+        const card = document.createElement("article");
+        card.className = "card skills-card";
+
+        const title = document.createElement("h3");
+        title.textContent = group.title || "";
+
+        const list = document.createElement("ul");
+        (group.items || []).forEach((item) => {
+          const listItem = document.createElement("li");
+          listItem.textContent = item;
+          list.appendChild(listItem);
+        });
+
+        card.append(title, list);
+        cardsContainer.appendChild(card);
+      });
+    };
+
+    const renderEducation = () => {
+      const dataEl = document.getElementById("education-data");
+      if (!dataEl) return;
+      let items = [];
+
+      try {
+        items = JSON.parse(dataEl.textContent);
+      } catch (error) {
+        console.error("Invalid education data", error);
+        return;
+      }
+
+      const list = document.querySelector("[data-education-list]");
+      if (!list) return;
+
+      list.innerHTML = "";
+
+      items.forEach((item) => {
+        if (!item) return;
+
+        const entry = document.createElement("div");
+
+        const degree = document.createElement("h3");
+        degree.textContent = item.degree || "";
+
+        const school = document.createElement("p");
+        school.textContent = item.school || "";
+
+        const period = document.createElement("p");
+        period.className = "muted";
+        period.textContent = item.period || "";
+
+        entry.append(degree, school, period);
+        list.appendChild(entry);
+      });
+    };
+
     const setupProjectsCarousel = () => {
       const cardsContainer = document.querySelector("[data-project-cards]");
       if (!cardsContainer || cardsContainer.closest(".projects-carousel")) return;
@@ -392,6 +512,9 @@
     loadSections()
       .then(() => {
         renderProjects();
+        renderExperience();
+        renderSkills();
+        renderEducation();
         setupProjectsCarousel();
         initProjectModals();
       })
