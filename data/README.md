@@ -5,7 +5,7 @@ Projects
 
 Experience
 - file: data/experience.json
-- fields: time, title, company, summary
+- fields: time, title, company, summary (string with line breaks or array of strings)
 
 Skills
 - file: data/skills.json

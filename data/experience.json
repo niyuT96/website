@@ -1,20 +1,31 @@
 [
   {
-    "time": "2021 - Present",
-    "title": "Lead Product Designer",
-    "company": "Pulse Innovations",
-    "summary": "Built a modular design system and reduced release time by 35%."
+    "time": "10/2025 - Heute",
+    "title": "R&D Test- und Entwicklungsingenieur/in",
+    "company": "nanoDUST GmbH",
+    "summary": [
+      "Software-Entwicklung des Sensormoduls (Python).",
+      "Erweiterung der GUI-Anwendung mit PySide und Realisierung der Live-Visualisierung von Geräte Data und Geräte-steuerung.",
+      "Automatisierte Übertragung in die Cloud-Datenbank."
+    ]
   },
   {
-    "time": "2018 - 2021",
-    "title": "Senior Frontend Engineer",
-    "company": "Northwind Labs",
-    "summary": "Delivered multi-tenant dashboards for 50k+ active users."
+    "time": "04/2025 - 09/2025",
+    "title": "Wissenschaftliche/r Mitarbeiter/in",
+    "company": "TH Aschaffenburg",
+    "summary": [
+      "Datenvisualisierung und Reporting mit AWS QuickSight.",
+      "Transformation und Bereinigung der Rohdaten mit Python.",
+      "Blockchain-Analyse und Integration in Sensordatenverarbeitung."
+    ]
   },
   {
     "time": "2016 - 2018",
     "title": "UX Designer",
     "company": "Glow Market",
-    "summary": "Created growth experiments that increased conversion by 22%."
+    "summary": [
+      "Created growth experiments that increased conversion by 22%.",
+      "Partnered with research to validate new onboarding flows."
+    ]
   }
 ]

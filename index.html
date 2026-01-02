@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jane Doe | Portfolio</title>
+  <title>Niyu Tong | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -67,7 +67,7 @@
     <header class="hero" id="home">
       <div class="hero-illustration" aria-hidden="true"></div>
       <nav class="nav">
-        <div class="logo">JD</div>
+        <div class="logo">NY</div>
         <div class="nav-links">
           <a href="#projects">Projects</a>
           <a href="#experience">Experience</a>
@@ -78,7 +78,7 @@
       </nav>
       <div class="hero-content">
         <div class="hero-text">
-          <p class="eyebrow">Hello, I'm Jane Doe</p>
+          <p class="eyebrow">Hello, I'm Niyu Tong</p>
           <h1>Web Developer & Designer</h1>
           <p class="lead">
             I build calm, story-driven interfaces that turn complex ideas into crisp digital
@@ -105,9 +105,9 @@
         </div>
         <div class="hero-card">
           <div class="profile">
-            <div class="avatar">JD</div>
+            <div class="avatar">NY</div>
             <div>
-              <p class="name">Jane Doe</p>
+              <p class="name">Niyu Tong</p>
               <p class="role">Design + Engineering</p>
             </div>
           </div>
@@ -178,7 +178,7 @@
     </section>
 
     <footer class="footer">
-      <p>(c) 2025 Jane Doe. Crafted with clarity and intention.</p>
+      <p>(c) 2025 Niyu Tong. Crafted with clarity and intention.</p>
     </footer>
   </div>
 
@@ -318,11 +318,17 @@
         const company = document.createElement("p");
         company.textContent = experience.company || "";
 
-        const summary = document.createElement("p");
-        summary.className = "muted";
-        summary.textContent = experience.summary || "";
+        const summaryLines = Array.isArray(experience.summary)
+          ? experience.summary
+          : String(experience.summary || "").split(/\r?\n+/).filter(Boolean);
 
-        content.append(title, company, summary);
+        content.append(title, company);
+        summaryLines.forEach((line) => {
+          const summary = document.createElement("p");
+          summary.className = "muted";
+          summary.textContent = line;
+          content.appendChild(summary);
+        });
         item.append(time, content);
         timeline.appendChild(item);
       });
