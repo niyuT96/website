@@ -1,0 +1,202 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jane Doe | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="page">
+    <header class="hero" id="home">
+      <div class="hero-illustration" aria-hidden="true"></div>
+      <nav class="nav">
+        <div class="logo">JD</div>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Languages & Skills</a>
+          <a href="#contact">Contacts</a>
+        </div>
+      </nav>
+      <div class="hero-content">
+        <div class="hero-text">
+          <p class="eyebrow">Hello, I'm Jane Doe</p>
+          <h1>Web Developer & Designer</h1>
+          <p class="lead">
+            I build calm, story-driven interfaces that turn complex ideas into crisp digital
+            experiences.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">View My Work</a>
+            <a class="btn ghost" href="#contact">Get In Touch</a>
+          </div>
+          <div class="hero-metrics">
+            <div>
+              <strong>8+</strong>
+              <span>Years Experience</span>
+            </div>
+            <div>
+              <strong>42</strong>
+              <span>Projects Delivered</span>
+            </div>
+            <div>
+              <strong>12</strong>
+              <span>Product Launches</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="profile">
+            <div class="avatar">JD</div>
+            <div>
+              <p class="name">Jane Doe</p>
+              <p class="role">Design + Engineering</p>
+            </div>
+          </div>
+          <div class="card-grid">
+            <div class="mini-card">
+              <p>Design System</p>
+              <span>2024</span>
+            </div>
+            <div class="mini-card">
+              <p>Fintech App</p>
+              <span>Live</span>
+            </div>
+            <div class="mini-card">
+              <p>Startup Brand</p>
+              <span>Phase 2</span>
+            </div>
+            <div class="mini-card">
+              <p>AI Studio</p>
+              <span>Concept</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div data-include="sections/projects.html"></div>
+    <div data-include="sections/experience.html"></div>
+    <div data-include="sections/skills.html"></div>
+    <div data-include="sections/education.html"></div>
+
+
+    <section class="section contact" id="contact">
+      <div class="section-head">
+        <h2>Contacts</h2>
+        <p>Let's build something elegant and efficient together.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Get in touch</h3>
+          <p class="muted">Prefer async? Drop a note and I'll reply within 24 hours.</p>
+          <form class="form">
+            <input type="text" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            <textarea rows="4" placeholder="Message"></textarea>
+            <button class="btn primary" type="button">Send Message</button>
+          </form>
+        </div>
+        <div class="contact-card">
+          <h3>Availability</h3>
+          <p class="muted">Currently booking for Q2 2025 collaborations.</p>
+          <div class="availability">
+            <div>
+              <span class="label">Location</span>
+              <strong>Seattle, WA</strong>
+            </div>
+            <div>
+              <span class="label">Email</span>
+              <strong>hello@janedoe.studio</strong>
+            </div>
+            <div>
+              <span class="label">Phone</span>
+              <strong>+1 (555) 109-0021</strong>
+            </div>
+          </div>
+          <a class="btn ghost" href="#projects">Download Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>(c) 2025 Jane Doe. Crafted with clarity and intention.</p>
+    </footer>
+  </div>
+
+  <script>
+    const loadSections = async () => {
+      const includes = document.querySelectorAll("[data-include]");
+      const tasks = Array.from(includes).map(async (section) => {
+        const response = await fetch(section.dataset.include);
+        if (!response.ok) {
+          throw new Error(`Failed to load ${section.dataset.include}`);
+        }
+        const html = await response.text();
+        section.outerHTML = html;
+      });
+
+      await Promise.all(tasks);
+    };
+
+    const initProjectModals = () => {
+      const closeModal = (modal) => {
+        modal.classList.remove("is-open");
+        document.body.classList.remove("no-scroll");
+      };
+
+      document.addEventListener("click", (event) => {
+        const trigger = event.target.closest("[data-modal]");
+        if (!trigger) return;
+        const modal = document.getElementById(trigger.dataset.modal);
+        if (!modal) return;
+        modal.classList.add("is-open");
+        document.body.classList.add("no-scroll");
+      });
+
+      document.querySelectorAll(".modal").forEach((modal) => {
+        const closeButton = modal.querySelector(".modal-close");
+        if (closeButton) {
+          closeButton.addEventListener("click", () => closeModal(modal));
+        }
+
+        modal.addEventListener("click", (event) => {
+          if (event.target === modal) {
+            closeModal(modal);
+          }
+        });
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          const trigger = event.target.closest("[data-modal]");
+          if (!trigger) return;
+          event.preventDefault();
+          const modal = document.getElementById(trigger.dataset.modal);
+          if (!modal) return;
+          modal.classList.add("is-open");
+          document.body.classList.add("no-scroll");
+          return;
+        }
+        if (event.key !== "Escape") return;
+        const openModal = document.querySelector(".modal.is-open");
+        if (openModal) closeModal(openModal);
+      });
+    };
+
+    loadSections()
+      .then(initProjectModals)
+      .catch((error) => console.error(error));
+  </script>
+</body>
+
+</html>
