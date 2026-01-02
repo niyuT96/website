@@ -15,7 +15,8 @@
     "company": "TH Aschaffenburg",
     "summary": [
       "Datenvisualisierung und Reporting mit AWS QuickSight.",
-      "Transformation und Bereinigung der Rohdaten mit Python.",
+      "Datenvisualisierung und Gerätesteuerung mit einer einfachen Website (Flask)",
+      "Transformation und Bereinigung der Rohdaten von Sensor mit Python.",
       "Blockchain-Analyse und Integration in Sensordatenverarbeitung."
     ]
   },
