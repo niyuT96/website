@@ -197,18 +197,15 @@
       await Promise.all(tasks);
     };
 
-    const renderProjects = () => {
-      const dataEl = document.getElementById("projects-data");
-      if (!dataEl) return;
-      let projects = [];
-
-      try {
-        projects = JSON.parse(dataEl.textContent);
-      } catch (error) {
-        console.error("Invalid projects data", error);
-        return;
+    const loadJson = async (path) => {
+      const response = await fetch(path);
+      if (!response.ok) {
+        throw new Error(`Failed to load ${path}`);
       }
+      return response.json();
+    };
 
+    const renderProjects = (projects) => {
       const cardsContainer = document.querySelector("[data-project-cards]");
       const modalsContainer = document.querySelector("[data-project-modals]");
       if (!cardsContainer || !modalsContainer) return;
@@ -216,7 +213,7 @@
       cardsContainer.innerHTML = "";
       modalsContainer.innerHTML = "";
 
-      projects.forEach((project) => {
+      (projects || []).forEach((project) => {
         if (!project || !project.id) return;
 
         const card = document.createElement("article");
@@ -297,24 +294,13 @@
       });
     };
 
-    const renderExperience = () => {
-      const dataEl = document.getElementById("experience-data");
-      if (!dataEl) return;
-      let experiences = [];
-
-      try {
-        experiences = JSON.parse(dataEl.textContent);
-      } catch (error) {
-        console.error("Invalid experience data", error);
-        return;
-      }
-
+    const renderExperience = (experiences) => {
       const timeline = document.querySelector("[data-experience-timeline]");
       if (!timeline) return;
 
       timeline.innerHTML = "";
 
-      experiences.forEach((experience) => {
+      (experiences || []).forEach((experience) => {
         if (!experience) return;
 
         const item = document.createElement("div");
@@ -342,24 +328,13 @@
       });
     };
 
-    const renderSkills = () => {
-      const dataEl = document.getElementById("skills-data");
-      if (!dataEl) return;
-      let groups = [];
-
-      try {
-        groups = JSON.parse(dataEl.textContent);
-      } catch (error) {
-        console.error("Invalid skills data", error);
-        return;
-      }
-
+    const renderSkills = (groups) => {
       const cardsContainer = document.querySelector("[data-skills-cards]");
       if (!cardsContainer) return;
 
       cardsContainer.innerHTML = "";
 
-      groups.forEach((group) => {
+      (groups || []).forEach((group) => {
         if (!group) return;
 
         const card = document.createElement("article");
@@ -380,24 +355,13 @@
       });
     };
 
-    const renderEducation = () => {
-      const dataEl = document.getElementById("education-data");
-      if (!dataEl) return;
-      let items = [];
-
-      try {
-        items = JSON.parse(dataEl.textContent);
-      } catch (error) {
-        console.error("Invalid education data", error);
-        return;
-      }
-
+    const renderEducation = (items) => {
       const list = document.querySelector("[data-education-list]");
       if (!list) return;
 
       list.innerHTML = "";
 
-      items.forEach((item) => {
+      (items || []).forEach((item) => {
         if (!item) return;
 
         const entry = document.createElement("div");
@@ -509,16 +473,25 @@
       });
     };
 
-    loadSections()
-      .then(() => {
-        renderProjects();
-        renderExperience();
-        renderSkills();
-        renderEducation();
-        setupProjectsCarousel();
-        initProjectModals();
-      })
-      .catch((error) => console.error(error));
+    const initPage = async () => {
+      await loadSections();
+
+      const [projects, experiences, skills, education] = await Promise.all([
+        loadJson("data/projects.json"),
+        loadJson("data/experience.json"),
+        loadJson("data/skills.json"),
+        loadJson("data/education.json")
+      ]);
+
+      renderProjects(projects);
+      renderExperience(experiences);
+      renderSkills(skills);
+      renderEducation(education);
+      setupProjectsCarousel();
+      initProjectModals();
+    };
+
+    initPage().catch((error) => console.error(error));
   </script>
 </body>
 
