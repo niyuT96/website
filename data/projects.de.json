@@ -1,47 +1,62 @@
 [
   {
-    "id": "nordic",
-    "title": "Nordic Studio",
-    "tag": "Portfolio",
-    "meta": "UI/UX + Frontend",
-    "preview": "images/project-1.svg",
-    "previewAlt": "Vorschau des Nordic Studio Projekts",
-    "summary": "Immersive Landingpage mit scrollbasiertem Storytelling und Produkt-Launches.",
-    "details": "Eine narrative Landingpage fuer ein Designstudio mit editorialer Typografie und modularer Komponentenbibliothek.",
+    "id": "Werkstudent - Sensor- & HMI-Softwareentwicklung (Python)",
+    "title": "Werkstudent - Sensor- & HMI-Softwareentwicklung",
+    "tag": "Embedded Systems · Python · HMI",
+    "preview": "images/project-sensor-hmi.svg",
+    "previewAlt": "Vorschau: Sensor- und HMI-Softwareentwicklung",
+    "summary": "Entwicklung eines Python-basierten Systems fuer Sensor-Kommunikation und HMI-Steuerung zur Echtzeit-Visualisierung und Interaktion.",
+    "details": "In diesem internen Unternehmensprojekt entwickelte ich eine Python-basierte Software zur Kommunikation mit Sensor-Hardware, zur Echtzeit-Visualisierung und zur Steuerung ueber ein einfaches HMI. Das System basiert auf einer Zustandsmaschine, um stabilen Betrieb, robuste Fehlerbehandlung und eine zuverlaessige Hardware-Interaktion zu sichern.",
     "list": [
-      "Rolle: Visual Design, Interaction und Frontend-Umsetzung.",
-      "Ergebnis: 38% mehr Kontaktanfragen.",
-      "Stack: HTML, CSS-Animationen, leichtgewichtiges JS."
+      "Rolle: Alleinverantwortlich fuer Geraetekommunikation, HMI-Logik und Systemintegration.",
+      "Aufgaben: Zustandsmaschinen-Design, Sensor-Kommunikation, Datenvisualisierung, Tests und Dokumentation.",
+      "Ergebnis: Stabiles und fehlertolerantes System fuer Echtzeit-Steuerung und Monitoring.",
+      "Stack: Python, TensorFlow, Multiprocessing, Embedded Hardware."
     ]
   },
   {
-    "id": "reform",
-    "title": "Reform Market",
-    "tag": "E-Commerce",
-    "meta": "Strategie + Design",
-    "preview": "images/project-2.svg",
-    "previewAlt": "Vorschau des Reform Market Projekts",
-    "summary": "Kuratiertes Shopping-Erlebnis mit intelligenten Bundles und klarem Checkout.",
-    "details": "Fokus auf personalisierte Bundles, schnellen Checkout und konsistentes Brand-Storytelling.",
+    "id": "Werkstudent - IoT & Cloud Datenpipeline (Python)",
+    "title": "Werkstudent - IoT & Cloud Datenpipeline",
+    "tag": "IoT · Backend · Datenvisualisierung",
+    "preview": "images/project-iot-cloud.svg",
+    "previewAlt": "Vorschau: IoT- und Cloud-Datenpipeline",
+    "summary": "Konzeption und Umsetzung einer IoT-Datenpipeline von Sensor-Hardware bis Cloud-Storage und Visualisierung.",
+    "details": "In diesem internen Unternehmensprojekt habe ich eine durchgaengige Datenpipeline entworfen und umgesetzt, die Sensordaten automatisch in die Cloud uebertraegt. Die Architektur ermoeglicht sichere Aufnahme, strukturierte Speicherung und Visualisierung fuer Echtzeit- und Verlaufsdaten.",
     "list": [
-      "Rolle: Produktstrategie, UX-Flows und UI-System.",
-      "Ergebnis: 22% Conversion-Uplift nach Launch.",
-      "Stack: Designsystem, Prototyping, Analytics."
+      "Rolle: Alleinverantwortlich fuer Backend-Datenverarbeitung und Systemintegration.",
+      "Aufgaben: Cloud-Architektur, Dateningestion, Verarbeitung, Visualisierung, Tests und Dokumentation.",
+      "Ergebnis: Zuverlaessiger Sensor-zu-Cloud-Datenfluss mit Dashboards fuer Monitoring und Analyse.",
+      "Stack: Python, AWS IoT Core, Lambda, Athena, QuickSight, Pandas, NumPy, Matplotlib."
     ]
   },
   {
-    "id": "driftboard",
-    "title": "Driftboard",
-    "tag": "Task Manager",
-    "meta": "Web App",
-    "preview": "images/project-3.svg",
-    "previewAlt": "Vorschau des Driftboard Projekts",
-    "summary": "Ruhige, farbcodierte Produktivitaets-Workspace fuer Teams.",
-    "details": "Ein aufgeraumter Workspace, der Projekte, Timelines und Prioritaeten ohne Ablenkung sichtbar macht.",
+    "id": "Software-Reengineering - GUI & Echtzeitdaten (Python)",
+    "title": "Software-Reengineering - GUI & Echtzeitdaten",
+    "tag": "GUI · Embedded · Reengineering",
+    "preview": "images/project-gui-reengineering.svg",
+    "previewAlt": "Vorschau: GUI-Reengineering und Echtzeitdaten",
+    "summary": "Refactoring und Optimierung einer bestehenden GUI-Anwendung zur Verbesserung von Datenintegritaet und Reaktionszeit.",
+    "details": "Dieses Projekt analysierte und verbesserte eine GUI-Anwendung, die bei Echtzeit-Visualisierung Daten verlor. Ich refaktorierte Teile der Datenpipeline zur Steigerung von Stabilitaet und Reaktionszeit. Zusaetzlich wurde ein leichtgewichtiges Web-Interface auf Linux bereitgestellt, um Echtzeitdaten anzuzeigen und die Hardware zu steuern.",
     "list": [
-      "Rolle: UX-Architektur und Frontend-Implementierung.",
-      "Ergebnis: 4.8/5 Zufriedenheit in der Beta.",
-      "Stack: Responsive Layout, Accessibility-first UI."
+      "Rolle: Alleinverantwortlich fuer Analyse, Refactoring und Systemoptimierung.",
+      "Aufgaben: Debugging, Architektur-Verbesserung, Echtzeit-Datenhandling, Tests und Dokumentation.",
+      "Ergebnis: Hoehere Datenzuverlaessigkeit und Stabilitaet bei Echtzeit-Visualisierung und Geraetesteuerung.",
+      "Stack: Python, PySide / Qt, Matplotlib, Linux, Embedded Hardware."
+    ]
+  },
+  {
+    "id": "TinyML auf ESP32 (Proseminar)",
+    "title": "TinyML auf ESP32",
+    "tag": "Machine Learning · Embedded Systems",
+    "preview": "images/project-tinyml-esp32.svg",
+    "previewAlt": "Vorschau: TinyML auf ESP32",
+    "summary": "Implementierung und Evaluation eines kompakten neuronalen Netzes auf einem ESP32 im Rahmen eines ML-Proseminars.",
+    "details": "In diesem akademischen Teamprojekt wurde ein kompaktes Modell reproduziert und mit TinyML-Techniken auf einen ESP32 portiert. Dazu gehoerten Datenaufbereitung, Modellbewertung und ressourcenbewusste Implementierung unter Hardware-Beschraenkungen.",
+    "list": [
+      "Rolle: Teammitglied mit Fokus auf Datensatzverarbeitung und Dokumentation.",
+      "Aufgaben: Omniglot-Datensatz, Evaluation und Mitarbeit am Projektbericht.",
+      "Ergebnis: Erfolgreiches Deployment und Evaluation eines Netzes auf ressourcenbeschraenkter Hardware.",
+      "Stack: Python, TinyML, ESP32."
     ]
   }
 ]
