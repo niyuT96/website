@@ -1,10 +1,22 @@
 [
   {
-    "title": "Languages",
-    "items": ["Chinese", "English", "Japanese"]
+    "title": "Sprache",
+    "items": [
+      "Chinese - Muttersprache",
+      "English - Gute Kenntnisse ",
+      "Deutsch - Sehr gute Kenntnisse"
+    ]
   },
   {
-    "title": "Programming Languages",
-    "items": ["HTML + CSS", "JavaScript", "Python"]
+    "title": "Fähigkeiten",
+    "layout": "tags",
+    "items": [
+      "Python",
+      "Java",
+      "C/C++",
+      "GitHub",
+      "MS Office Suite",
+      "LaTex"
+    ]
   }
 ]

@@ -40,6 +40,7 @@ const renderSite = (data) => {
       element.setAttribute("placeholder", data[key]);
     }
   });
+
 };
 
 const renderProjects = (projects) => {
@@ -193,6 +194,9 @@ const renderSkills = (groups) => {
     title.textContent = group.title || "";
 
     const list = document.createElement("ul");
+    if (group.layout === "tags") {
+      list.classList.add("skills-tags");
+    }
     (group.items || []).forEach((item) => {
       const listItem = document.createElement("li");
       listItem.textContent = item;

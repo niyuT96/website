@@ -76,7 +76,7 @@ body {
   right: 32px;
   width: 520px;
   height: 320px;
-  background: url("images/hero-illustration.svg") center / cover no-repeat;
+  background: url("images/hello.svg") center / cover no-repeat;
   border-radius: 36px;
   opacity: 0.95;
   z-index: 0;
@@ -394,6 +394,24 @@ h1 {
   margin-top: 12px;
   display: grid;
   gap: 8px;
+}
+
+.skills-card ul.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  row-gap: 14px;
+}
+
+.skills-card ul.skills-tags li {
+  background: #cfe0f6;
+  color: #111827;
+  border-radius: 800px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
 }
 
 .modal {

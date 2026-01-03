@@ -9,7 +9,7 @@ Experience
 
 Skills
 - file: data/skills.json
-- fields: title, items (array of strings)
+- fields: title, items (array of strings), layout (optional: "tags")
 
 Education
 - file: data/education.json
