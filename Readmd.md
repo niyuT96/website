@@ -1,2 +1,0 @@
-你是一名资深的网站设计师，擅长编写简洁明了结构清晰的代码，请使用Scrum,分析用户需求，设计Story数量,用户希望生成一个个人作品集网站，其中包括了My Projects, Work Experiences,Education Experience,Skills, Kontakts.
-网站风格参照“简约科技感个人作品集展示” ，请生成一个story.md记录分析得到的Story结论，并生成一个records.md,并在后续做每一次修改时记录修改内容，涉及代码，以及修改原因
