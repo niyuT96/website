@@ -76,7 +76,7 @@ body {
   right: 32px;
   width: 520px;
   height: 320px;
-  background: url("images/hello.svg") center / cover no-repeat;
+  background: url("images/hero.png") center / cover no-repeat;
   border-radius: 36px;
   opacity: 0.95;
   z-index: 0;
@@ -112,6 +112,29 @@ body {
   display: flex;
   gap: 22px;
   font-size: 0.95rem;
+}
+
+.lang-switch {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.lang-button {
+  border: 1px solid #dbe4ff;
+  background: #fff;
+  color: var(--ink);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lang-button.is-active {
+  background: var(--accent-soft);
+  color: #1a2b4c;
+  border-color: #c5d7ff;
 }
 
 .nav a {

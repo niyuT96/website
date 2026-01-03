@@ -1,0 +1,33 @@
+[
+  {
+    "time": "10/2025 - Present",
+    "title": "R&D Test and Development Engineer",
+    "company": "nanoDUST GmbH",
+    "summary": [
+      "Software development for the sensor module (Python): SIM card, IoT Core (AWS).",
+      "GUI for live visualization and control of device data.",
+      "Automated transfer to the cloud database."
+    ]
+  },
+  {
+    "time": "04/2025 - 09/2025",
+    "title": "Research Associate",
+    "company": "TH Aschaffenburg",
+    "summary": [
+      "Data visualization and reporting with AWS QuickSight.",
+      "Data visualization and device control via a simple web app (Flask).",
+      "Transformation and cleaning of raw sensor data with Python.",
+      "Blockchain analysis and integration into sensor data processing."
+    ]
+  },
+  {
+    "time": "02/2024 - 08/2024",
+    "title": "Working Student",
+    "company": "nanoDUST GmbH",
+    "summary": [
+      "Data processing with Pandas and NumPy.",
+      "Sensor module development (Python): sensor communication, Linux, state machine.",
+      "HMI GUI for live visualization and control of device data."
+    ]
+  }
+]

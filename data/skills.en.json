@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Languages",
+    "items": [
+      "Chinese - Native",
+      "English - Professional proficiency",
+      "German - Very good proficiency"
+    ]
+  },
+  {
+    "title": "Skills",
+    "layout": "tags",
+    "items": [
+      "Python",
+      "Java",
+      "C/C++",
+      "GitHub",
+      "MS Office Suite",
+      "LaTeX"
+    ]
+  }
+]

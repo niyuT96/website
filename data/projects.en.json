@@ -1,0 +1,47 @@
+[
+  {
+    "id": "nordic",
+    "title": "Nordic Studio",
+    "tag": "Portfolio Showcase",
+    "meta": "UI/UX + Frontend",
+    "preview": "images/project-1.svg",
+    "previewAlt": "Preview of Nordic Studio project",
+    "summary": "Immersive landing page with scroll-driven storytelling and product launches.",
+    "details": "A narrative landing page for a design studio, featuring scroll-led sections, editorial typography, and a modular component library.",
+    "list": [
+      "Role: Visual design, interaction, and frontend build.",
+      "Outcome: 38% increase in contact submissions.",
+      "Stack: HTML, CSS animations, lightweight JS."
+    ]
+  },
+  {
+    "id": "reform",
+    "title": "Reform Market",
+    "tag": "E-commerce",
+    "meta": "Strategy + Design",
+    "preview": "images/project-2.svg",
+    "previewAlt": "Preview of Reform Market project",
+    "summary": "Curated shopping journey with intelligent bundles and a clean checkout flow.",
+    "details": "A curated shopping journey focused on personalized bundles, streamlined checkout, and brand storytelling.",
+    "list": [
+      "Role: Product strategy, UX flows, and UI system.",
+      "Outcome: 22% lift in conversion after launch.",
+      "Stack: Design system, prototyping, analytics."
+    ]
+  },
+  {
+    "id": "driftboard",
+    "title": "Driftboard",
+    "tag": "Task Manager",
+    "meta": "Web App",
+    "preview": "images/project-3.svg",
+    "previewAlt": "Preview of Driftboard project",
+    "summary": "Calm, color-coded productivity workspace for cross-functional teams.",
+    "details": "A calm, color-coded workspace that helps teams track projects, timelines, and priorities without the noise.",
+    "list": [
+      "Role: UX architecture and frontend implementation.",
+      "Outcome: 4.8/5 satisfaction rating from beta users.",
+      "Stack: Responsive layout, accessibility-first UI."
+    ]
+  }
+]

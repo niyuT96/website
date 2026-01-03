@@ -20,6 +20,16 @@ const loadJson = async (path) => {
   return response.json();
 };
 
+const loadJsonWithFallback = async (paths) => {
+  for (const path of paths) {
+    const response = await fetch(path);
+    if (response.ok) {
+      return response.json();
+    }
+  }
+  throw new Error(`Failed to load ${paths.join(", ")}`);
+};
+
 const renderSite = (data) => {
   if (!data) return;
 
@@ -281,20 +291,42 @@ const setupProjectsCarousel = () => {
   updateButtons();
 };
 
+let modalListenersBound = false;
+
 const initProjectModals = () => {
   const closeModal = (modal) => {
     modal.classList.remove("is-open");
     document.body.classList.remove("no-scroll");
   };
 
-  document.addEventListener("click", (event) => {
-    const trigger = event.target.closest("[data-modal]");
-    if (!trigger) return;
-    const modal = document.getElementById(trigger.dataset.modal);
-    if (!modal) return;
-    modal.classList.add("is-open");
-    document.body.classList.add("no-scroll");
-  });
+  if (!modalListenersBound) {
+    document.addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-modal]");
+      if (!trigger) return;
+      const modal = document.getElementById(trigger.dataset.modal);
+      if (!modal) return;
+      modal.classList.add("is-open");
+      document.body.classList.add("no-scroll");
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        const trigger = event.target.closest("[data-modal]");
+        if (!trigger) return;
+        event.preventDefault();
+        const modal = document.getElementById(trigger.dataset.modal);
+        if (!modal) return;
+        modal.classList.add("is-open");
+        document.body.classList.add("no-scroll");
+        return;
+      }
+      if (event.key !== "Escape") return;
+      const openModal = document.querySelector(".modal.is-open");
+      if (openModal) closeModal(openModal);
+    });
+
+    modalListenersBound = true;
+  }
 
   document.querySelectorAll(".modal").forEach((modal) => {
     const closeButton = modal.querySelector(".modal-close");
@@ -308,33 +340,46 @@ const initProjectModals = () => {
       }
     });
   });
+};
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      const trigger = event.target.closest("[data-modal]");
-      if (!trigger) return;
-      event.preventDefault();
-      const modal = document.getElementById(trigger.dataset.modal);
-      if (!modal) return;
-      modal.classList.add("is-open");
-      document.body.classList.add("no-scroll");
-      return;
-    }
-    if (event.key !== "Escape") return;
-    const openModal = document.querySelector(".modal.is-open");
-    if (openModal) closeModal(openModal);
+const supportedLangs = new Set(["de", "en"]);
+const defaultLang = "de";
+const storageKey = "siteLang";
+
+const getInitialLang = () => {
+  const params = new URLSearchParams(window.location.search);
+  const urlLang = params.get("lang");
+  if (supportedLangs.has(urlLang)) {
+    return urlLang;
+  }
+  const stored = localStorage.getItem(storageKey);
+  if (supportedLangs.has(stored)) {
+    return stored;
+  }
+  return defaultLang;
+};
+
+const setActiveLangButton = (lang) => {
+  document.querySelectorAll("[data-lang]").forEach((button) => {
+    const isActive = button.dataset.lang === lang;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
   });
 };
 
-const initPage = async () => {
-  await loadSections();
+const loadLanguageData = async (lang) => {
+  const suffix = supportedLangs.has(lang) ? `.${lang}` : "";
+  const withFallback = (name) => [
+    `data/${name}${suffix}.json`,
+    `data/${name}.json`
+  ];
 
   const [site, projects, experiences, skills, education] = await Promise.all([
-    loadJson("data/site.json"),
-    loadJson("data/projects.json"),
-    loadJson("data/experience.json"),
-    loadJson("data/skills.json"),
-    loadJson("data/education.json")
+    loadJsonWithFallback(withFallback("site")),
+    loadJsonWithFallback(withFallback("projects")),
+    loadJsonWithFallback(withFallback("experience")),
+    loadJsonWithFallback(withFallback("skills")),
+    loadJsonWithFallback(withFallback("education"))
   ]);
 
   renderSite(site);
@@ -344,6 +389,27 @@ const initPage = async () => {
   renderEducation(education);
   setupProjectsCarousel();
   initProjectModals();
+  document.documentElement.lang = lang;
+};
+
+const initLanguageSwitcher = () => {
+  document.querySelectorAll("[data-lang]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const lang = button.dataset.lang;
+      if (!supportedLangs.has(lang)) return;
+      localStorage.setItem(storageKey, lang);
+      setActiveLangButton(lang);
+      await loadLanguageData(lang);
+    });
+  });
+};
+
+const initPage = async () => {
+  await loadSections();
+  initLanguageSwitcher();
+  const lang = getInitialLang();
+  setActiveLangButton(lang);
+  await loadLanguageData(lang);
 };
 
 initPage().catch((error) => console.error(error));

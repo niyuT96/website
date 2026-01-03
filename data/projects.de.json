@@ -1,0 +1,47 @@
+[
+  {
+    "id": "nordic",
+    "title": "Nordic Studio",
+    "tag": "Portfolio",
+    "meta": "UI/UX + Frontend",
+    "preview": "images/project-1.svg",
+    "previewAlt": "Vorschau des Nordic Studio Projekts",
+    "summary": "Immersive Landingpage mit scrollbasiertem Storytelling und Produkt-Launches.",
+    "details": "Eine narrative Landingpage fuer ein Designstudio mit editorialer Typografie und modularer Komponentenbibliothek.",
+    "list": [
+      "Rolle: Visual Design, Interaction und Frontend-Umsetzung.",
+      "Ergebnis: 38% mehr Kontaktanfragen.",
+      "Stack: HTML, CSS-Animationen, leichtgewichtiges JS."
+    ]
+  },
+  {
+    "id": "reform",
+    "title": "Reform Market",
+    "tag": "E-Commerce",
+    "meta": "Strategie + Design",
+    "preview": "images/project-2.svg",
+    "previewAlt": "Vorschau des Reform Market Projekts",
+    "summary": "Kuratiertes Shopping-Erlebnis mit intelligenten Bundles und klarem Checkout.",
+    "details": "Fokus auf personalisierte Bundles, schnellen Checkout und konsistentes Brand-Storytelling.",
+    "list": [
+      "Rolle: Produktstrategie, UX-Flows und UI-System.",
+      "Ergebnis: 22% Conversion-Uplift nach Launch.",
+      "Stack: Designsystem, Prototyping, Analytics."
+    ]
+  },
+  {
+    "id": "driftboard",
+    "title": "Driftboard",
+    "tag": "Task Manager",
+    "meta": "Web App",
+    "preview": "images/project-3.svg",
+    "previewAlt": "Vorschau des Driftboard Projekts",
+    "summary": "Ruhige, farbcodierte Produktivitaets-Workspace fuer Teams.",
+    "details": "Ein aufgeraumter Workspace, der Projekte, Timelines und Prioritaeten ohne Ablenkung sichtbar macht.",
+    "list": [
+      "Rolle: UX-Architektur und Frontend-Implementierung.",
+      "Ergebnis: 4.8/5 Zufriedenheit in der Beta.",
+      "Stack: Responsive Layout, Accessibility-first UI."
+    ]
+  }
+]
