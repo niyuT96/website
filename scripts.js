@@ -132,7 +132,16 @@ const renderProjects = (projects) => {
 
     (project.list || []).forEach((item) => {
       const listItem = document.createElement("li");
-      listItem.textContent = item;
+      const text = String(item || "");
+      const separatorIndex = text.indexOf(":");
+      if (separatorIndex > 0) {
+        const label = document.createElement("strong");
+        label.textContent = text.slice(0, separatorIndex + 1) + " ";
+        listItem.appendChild(label);
+        listItem.append(text.slice(separatorIndex + 1).trim());
+      } else {
+        listItem.textContent = text;
+      }
       list.appendChild(listItem);
     });
 

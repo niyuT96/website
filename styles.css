@@ -310,11 +310,7 @@ h1 {
 }
 
 .project-image {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: 16px;
-  background: #edf2ff;
+  display: none;
 }
 
 .project-card {
