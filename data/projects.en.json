@@ -30,8 +30,8 @@
     ]
   },
   {
-    "id": "Software-Reengineering - GUI & Echtzeitdaten (Python)",
-    "title": "Software-Reengineering - GUI & Echtzeitdaten",
+    "id": "Software-Reengineering - GUI & Real-time data (Python)",
+    "title": "Software-Reengineering - GUI & Real-time data",
     "tag": "GUI · Embedded · Reengineering",
     "preview": "images/project-gui-reengineering.svg",
     "previewAlt": "GUI reengineering and real-time data visualization project preview",
