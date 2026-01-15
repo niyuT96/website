@@ -109,12 +109,6 @@ const renderProjects = (projects) => {
     const panel = document.createElement("div");
     panel.className = "modal-panel";
 
-    const closeButton = document.createElement("button");
-    closeButton.className = "modal-close";
-    closeButton.type = "button";
-    closeButton.setAttribute("aria-label", "Close dialog");
-    closeButton.innerHTML = "&times;";
-
     const kicker = document.createElement("p");
     kicker.className = "modal-kicker";
     kicker.textContent = project.tag || "";
@@ -145,7 +139,7 @@ const renderProjects = (projects) => {
       list.appendChild(listItem);
     });
 
-    panel.append(closeButton, kicker, modalTitle, details, list);
+    panel.append(kicker, modalTitle, details, list);
     modal.appendChild(panel);
     modalsContainer.appendChild(modal);
   });
@@ -338,11 +332,6 @@ const initProjectModals = () => {
   }
 
   document.querySelectorAll(".modal").forEach((modal) => {
-    const closeButton = modal.querySelector(".modal-close");
-    if (closeButton) {
-      closeButton.addEventListener("click", () => closeModal(modal));
-    }
-
     modal.addEventListener("click", (event) => {
       if (event.target === modal) {
         closeModal(modal);
