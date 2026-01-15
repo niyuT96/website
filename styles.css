@@ -323,6 +323,13 @@ h1 {
   gap: 28px;
 }
 
+#projects {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+
 .section-head h2 {
   font-size: clamp(1.6rem, 2.6vw, 2.1rem);
   margin-bottom: 8px;
@@ -501,6 +508,7 @@ h1 {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: rgba(15, 29, 46, 0.35) transparent;
+  scrollbar-gutter: stable;
   box-shadow: var(--shadow);
   position: relative;
   display: grid;
@@ -513,6 +521,7 @@ h1 {
 
 .modal-panel::-webkit-scrollbar-track {
   background: transparent;
+  margin: 8px 4px;
 }
 
 .modal-panel::-webkit-scrollbar-thumb {
@@ -795,7 +804,8 @@ textarea:focus {
 
   .hero {
     padding: 28px 24px 40px;
-    background-position: 70% 100%;
+    background-image: url("images/mobile.png");
+    background-position: center;
   }
 
   .nav-links {
