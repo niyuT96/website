@@ -413,8 +413,45 @@ const initLanguageSwitcher = () => {
   });
 };
 
+const initMobileNav = () => {
+  const toggle = document.querySelector(".nav-toggle");
+  const navLinks = document.querySelector(".nav-links");
+  const nav = document.querySelector(".nav");
+  if (!toggle || !navLinks || !nav) return;
+
+  const setOpen = (isOpen) => {
+    navLinks.classList.toggle("is-open", isOpen);
+    toggle.classList.toggle("is-open", isOpen);
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  };
+
+  toggle.addEventListener("click", () => {
+    const isOpen = !navLinks.classList.contains("is-open");
+    setOpen(isOpen);
+  });
+
+  navLinks.addEventListener("click", (event) => {
+    if (event.target.closest("a")) {
+      setOpen(false);
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!navLinks.classList.contains("is-open")) return;
+    if (event.target.closest(".nav")) return;
+    setOpen(false);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) {
+      setOpen(false);
+    }
+  });
+};
+
 const initPage = async () => {
   await loadSections();
+  initMobileNav();
   initLanguageSwitcher();
   const lang = getInitialLang();
   setActiveLangButton(lang);

@@ -18,13 +18,19 @@
     <header class="hero" id="home">
       <nav class="nav">
         <div class="logo" data-site-text="logo">NY</div>
-        <div class="nav-links">
+        <div class="nav-links" id="primary-nav">
           <a href="#projects" data-site-text="navProjects">Projects</a>
           <a href="#experience" data-site-text="navExperience">Experience</a>
           <a href="#education" data-site-text="navEducation">Education</a>
           <a href="#skills" data-site-text="navSkills">Languages & Skills</a>
           <a href="#contact" data-site-text="navContacts">Contacts</a>
         </div>
+        <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-label">Menu</span>
+        </button>
         <div class="lang-switch" aria-label="Language switch">
           <button type="button" class="lang-button" data-lang="de" aria-pressed="false">DE</button>
           <button type="button" class="lang-button" data-lang="en" aria-pressed="false">EN</button>
