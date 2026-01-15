@@ -323,12 +323,6 @@ h1 {
   gap: 28px;
 }
 
-#projects {
-  background: #fff;
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  box-shadow: var(--shadow);
-}
 
 .section-head h2 {
   font-size: clamp(1.6rem, 2.6vw, 2.1rem);
@@ -364,8 +358,6 @@ h1 {
 
 .project-card {
   cursor: pointer;
-  background: transparent;
-  box-shadow: none;
 }
 
 .project-card:focus {
@@ -804,8 +796,7 @@ textarea:focus {
 
   .hero {
     padding: 28px 24px 40px;
-    background-image: url("images/mobile.png");
-    background-position: center;
+    background: url("images/mobile.png") center / cover no-repeat;
   }
 
   .nav-links {
