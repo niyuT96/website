@@ -357,6 +357,8 @@ h1 {
 
 .project-card {
   cursor: pointer;
+  background: transparent;
+  box-shadow: none;
 }
 
 .project-card:focus {
@@ -497,10 +499,27 @@ h1 {
   max-height: min(80vh, 640px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(15, 29, 46, 0.35) transparent;
   box-shadow: var(--shadow);
   position: relative;
   display: grid;
   gap: 14px;
+}
+
+.modal-panel::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modal-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-panel::-webkit-scrollbar-thumb {
+  background: rgba(15, 29, 46, 0.35);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
 }
 
 .modal-close {
@@ -766,6 +785,10 @@ textarea:focus {
     gap: 56px;
   }
 
+  .nav {
+    display: none;
+  }
+
   body {
     background: url("images/mobile.png") center top / cover no-repeat;
   }
@@ -821,7 +844,7 @@ textarea:focus {
   }
 
   .modal {
-    place-items: start center;
+    place-items: center;
     padding: 16px;
     overflow-y: auto;
   }
@@ -829,7 +852,7 @@ textarea:focus {
   .modal-panel {
     width: 100%;
     max-height: 72vh;
-    margin: 16px auto 24px;
+    margin: 0 auto;
   }
 
   .logo {
