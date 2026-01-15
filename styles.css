@@ -494,6 +494,8 @@ h1 {
   padding: 28px 30px;
   max-width: 520px;
   width: min(90vw, 520px);
+  max-height: min(80vh, 640px);
+  overflow-y: auto;
   box-shadow: var(--shadow);
   position: relative;
   display: grid;
@@ -767,6 +769,10 @@ textarea:focus {
     gap: 56px;
   }
 
+  body {
+    background: radial-gradient(circle at top, #ffffff 0%, #f2f5ff 35%, #dfe8fb 100%);
+  }
+
   .hero {
     padding: 28px 24px 40px;
     background-position: 70% 100%;
@@ -815,6 +821,16 @@ textarea:focus {
   .page {
     padding: 24px 14px 40px;
     gap: 48px;
+  }
+
+  .modal {
+    place-items: start center;
+    padding: 16px;
+  }
+
+  .modal-panel {
+    width: 100%;
+    max-height: 88vh;
   }
 
   .logo {
