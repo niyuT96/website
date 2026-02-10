@@ -457,6 +457,19 @@ h1 {
   gap: 8px;
 }
 
+.skills-card-languages {
+  grid-template-rows: auto 1fr;
+}
+
+.skills-card-languages ul {
+  margin-top: 8px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0;
+}
+
 .skills-card ul.skills-tags {
   display: flex;
   flex-wrap: wrap;
@@ -495,7 +508,7 @@ h1 {
 
 .modal-panel {
   background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
-  border-radius: 0;
+  border-radius: 0 !important;
   padding: var(--modal-padding);
   max-width: var(--modal-max-width);
   width: min(90vw, var(--modal-max-width));
@@ -863,6 +876,8 @@ textarea:focus {
   .hero-metrics {
     flex-direction: column;
     gap: 12px;
+    align-items: center;
+    text-align: center;
   }
 
   .hero-illustration {
@@ -899,7 +914,7 @@ textarea:focus {
     width: 100%;
     max-height: min(var(--modal-mobile-max-height), calc(100dvh - 30px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
     margin: 0 auto;
-    border-radius: 0;
+    border-radius: 0 !important;
     padding: 28px 20px 20px;
   }
 
@@ -935,5 +950,15 @@ textarea:focus {
 
   .projects-track .card {
     flex-basis: 86vw;
+  }
+}
+
+@media (min-width: 601px) {
+  .contact-grid > .btn {
+    justify-self: start;
+    align-self: start;
+    width: auto;
+    padding: 10px 16px;
+    font-size: 0.92rem;
   }
 }

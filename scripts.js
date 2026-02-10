@@ -216,6 +216,8 @@ const renderSkills = (groups) => {
     const list = document.createElement("ul");
     if (group.layout === "tags") {
       list.classList.add("skills-tags");
+    } else {
+      card.classList.add("skills-card-languages");
     }
     (group.items || []).forEach((item) => {
       const listItem = document.createElement("li");
