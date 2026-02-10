@@ -392,7 +392,7 @@ h1 {
 .tag {
   background: var(--mint);
   padding: 4px 10px;
-  border-radius: 999px;
+  border-radius: var(--radius);
   color: #137d65;
   font-weight: 600;
 }
@@ -876,7 +876,15 @@ textarea:focus {
   .hero-metrics {
     flex-direction: column;
     gap: 12px;
+    width: 100%;
+    justify-content: center;
     align-items: center;
+    text-align: center;
+  }
+
+  .hero-metrics > div {
+    width: 100%;
+    max-width: 320px;
     text-align: center;
   }
 

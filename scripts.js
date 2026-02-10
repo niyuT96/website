@@ -228,6 +228,32 @@ const renderSkills = (groups) => {
     card.append(title, list);
     cardsContainer.appendChild(card);
   });
+
+  requestAnimationFrame(syncSkillsCardHeight);
+};
+
+const syncSkillsCardHeight = () => {
+  const languageCard = document.querySelector(".skills-card-languages");
+  const skillsTagList = document.querySelector(".skills-card .skills-tags");
+  const skillsCard = skillsTagList ? skillsTagList.closest(".skills-card") : null;
+  if (!languageCard || !skillsCard) return;
+
+  languageCard.style.height = "";
+  if (window.innerWidth <= 900) return;
+
+  const targetHeight = Math.ceil(skillsCard.getBoundingClientRect().height);
+  if (targetHeight > 0) {
+    languageCard.style.height = `${targetHeight}px`;
+  }
+};
+
+let skillsHeightSyncBound = false;
+
+const initSkillsHeightSync = () => {
+  if (skillsHeightSyncBound) return;
+  window.addEventListener("resize", syncSkillsCardHeight);
+  window.addEventListener("load", syncSkillsCardHeight);
+  skillsHeightSyncBound = true;
 };
 
 const renderEducation = (items) => {
@@ -457,6 +483,7 @@ const initMobileNav = () => {
 const initPage = async () => {
   await loadSections();
   initMobileNav();
+  initSkillsHeightSync();
   initLanguageSwitcher();
   const lang = getInitialLang();
   setActiveLangButton(lang);
