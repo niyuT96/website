@@ -827,7 +827,20 @@ textarea:focus {
   }
 
   .nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+
+  .logo,
+  .nav-links,
+  .nav-toggle {
     display: none;
+  }
+
+  .lang-switch {
+    display: flex;
+    margin-left: auto;
   }
 
   body {
@@ -864,8 +877,8 @@ textarea:focus {
   }
 
   .lang-switch {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
   }
 
   .hero-actions {
@@ -874,27 +887,30 @@ textarea:focus {
   }
 
   .hero-metrics {
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 18px;
     width: 100%;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: left;
   }
 
   .hero-metrics > div {
-    width: 100%;
-    max-width: 320px;
-    margin-inline: auto;
-    display: grid;
-    justify-items: center;
-    text-align: center;
+    width: auto;
+    max-width: none;
+    margin-inline: 0;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    white-space: nowrap;
+    text-align: left;
   }
 
   .hero-metrics strong,
   .hero-metrics span {
-    width: 100%;
-    text-align: center;
+    width: auto;
+    text-align: left;
   }
 
   .hero-illustration {
@@ -919,6 +935,14 @@ textarea:focus {
   .page {
     padding: 24px 14px 40px;
     gap: 48px;
+  }
+
+  .hero-metrics {
+    gap: 12px;
+  }
+
+  .hero-metrics span {
+    font-size: 0.88rem;
   }
 
   .modal {
