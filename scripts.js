@@ -51,6 +51,11 @@ const renderSite = (data) => {
     }
   });
 
+  const heroTitle = document.querySelector('[data-site-text="heroTitle"]');
+  if (heroTitle) {
+    heroTitle.textContent = String(heroTitle.textContent || "").replace(/\s*\([^)]*\)\s*$/, "").trim();
+  }
+
 };
 
 const renderProjects = (projects) => {
