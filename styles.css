@@ -691,6 +691,10 @@ h1 {
   gap: 16px;
 }
 
+.resume-btn {
+  margin-top: 20px;
+}
+
 .form {
   display: grid;
   gap: 12px;
@@ -1023,15 +1027,5 @@ textarea:focus {
 
   .projects-track .card {
     flex-basis: 86vw;
-  }
-}
-
-@media (min-width: 601px) {
-  .contact-grid > .btn {
-    justify-self: start;
-    align-self: end;
-    width: auto;
-    padding: 10px 16px;
-    font-size: 0.92rem;
   }
 }
