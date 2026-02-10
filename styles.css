@@ -885,6 +885,15 @@ textarea:focus {
   .hero-metrics > div {
     width: 100%;
     max-width: 320px;
+    margin-inline: auto;
+    display: grid;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .hero-metrics strong,
+  .hero-metrics span {
+    width: 100%;
     text-align: center;
   }
 
