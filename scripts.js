@@ -1,7 +1,7 @@
 const loadSections = async () => {
   const includes = document.querySelectorAll("[data-include]");
   const tasks = Array.from(includes).map(async (section) => {
-    const response = await fetch(section.dataset.include);
+    const response = await fetch(section.dataset.include, { cache: "no-store" });
     if (!response.ok) {
       throw new Error(`Failed to load ${section.dataset.include}`);
     }
@@ -13,7 +13,7 @@ const loadSections = async () => {
 };
 
 const loadJson = async (path) => {
-  const response = await fetch(path);
+  const response = await fetch(path, { cache: "no-store" });
   if (!response.ok) {
     throw new Error(`Failed to load ${path}`);
   }
@@ -22,7 +22,7 @@ const loadJson = async (path) => {
 
 const loadJsonWithFallback = async (paths) => {
   for (const path of paths) {
-    const response = await fetch(path);
+    const response = await fetch(path, { cache: "no-store" });
     if (response.ok) {
       return response.json();
     }
