@@ -109,6 +109,13 @@ const renderProjects = (projects) => {
     const panel = document.createElement("div");
     panel.className = "modal-panel";
 
+    const closeButton = document.createElement("button");
+    closeButton.type = "button";
+    closeButton.className = "modal-close";
+    closeButton.dataset.modalClose = "true";
+    closeButton.setAttribute("aria-label", "Close dialog");
+    closeButton.textContent = "X";
+
     const kicker = document.createElement("p");
     kicker.className = "modal-kicker";
     kicker.textContent = project.tag || "";
@@ -139,7 +146,7 @@ const renderProjects = (projects) => {
       list.appendChild(listItem);
     });
 
-    panel.append(kicker, modalTitle, details, list);
+    panel.append(closeButton, kicker, modalTitle, details, list);
     modal.appendChild(panel);
     modalsContainer.appendChild(modal);
   });
@@ -304,6 +311,13 @@ const initProjectModals = () => {
 
   if (!modalListenersBound) {
     document.addEventListener("click", (event) => {
+      const closeButton = event.target.closest("[data-modal-close]");
+      if (closeButton) {
+        const currentModal = closeButton.closest(".modal");
+        if (currentModal) closeModal(currentModal);
+        return;
+      }
+
       const trigger = event.target.closest("[data-modal]");
       if (!trigger) return;
       const modal = document.getElementById(trigger.dataset.modal);
