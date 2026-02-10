@@ -1,7 +1,7 @@
 [
   {
-    "id": "Werkstudent - Sensor- & HMI-Softwareentwicklung (Python)",
-    "title": "Werkstudent - Sensor- & HMI-Softwareentwicklung",
+    "id": "Sensor- & HMI-Softwareentwicklung (Python)",
+    "title": "Sensor- & HMI-Softwareentwicklung",
     "tag": "Embedded Systems · Python · HMI",
     "preview": "images/project-sensor-hmi.svg",
     "previewAlt": "Vorschau: Sensor- und HMI-Softwareentwicklung",
@@ -11,12 +11,12 @@
       "Rolle: Alleinverantwortlich fuer Geraetekommunikation, HMI-Logik und Systemintegration.",
       "Aufgaben: Zustandsmaschinen-Design, Sensor-Kommunikation, Datenvisualisierung, Tests und Dokumentation.",
       "Ergebnis: Stabiles und fehlertolerantes System fuer Echtzeit-Steuerung und Monitoring.",
-      "Stack: Python, TensorFlow, Multiprocessing, Embedded Hardware."
+      "Stack: Python,  Multiprocessing, Embedded Hardware."
     ]
   },
   {
-    "id": "Werkstudent - IoT & Cloud Datenpipeline (Python)",
-    "title": "Werkstudent - IoT & Cloud Datenpipeline",
+    "id": "IoT & Cloud Datenpipeline (Python)",
+    "title": "IoT & Cloud Datenpipeline",
     "tag": "IoT · Backend · Datenvisualisierung",
     "preview": "images/project-iot-cloud.svg",
     "previewAlt": "Vorschau: IoT- und Cloud-Datenpipeline",
@@ -41,7 +41,7 @@
       "Rolle: Alleinverantwortlich fuer Analyse, Refactoring und Systemoptimierung.",
       "Aufgaben: Debugging, Architektur-Verbesserung, Echtzeit-Datenhandling, Tests und Dokumentation.",
       "Ergebnis: Hoehere Datenzuverlaessigkeit und Stabilitaet bei Echtzeit-Visualisierung und Geraetesteuerung.",
-      "Stack: Python, PySide / Qt, Matplotlib, Linux, Embedded Hardware."
+      "Stack: Python, PySide, Matplotlib, Linux, Embedded Hardware."
     ]
   },
   {
@@ -56,7 +56,7 @@
       "Rolle: Teammitglied mit Fokus auf Datensatzverarbeitung und Dokumentation.",
       "Aufgaben: Omniglot-Datensatz, Evaluation und Mitarbeit am Projektbericht.",
       "Ergebnis: Erfolgreiches Deployment und Evaluation eines Netzes auf ressourcenbeschraenkter Hardware.",
-      "Stack: Python, TinyML, ESP32."
+      "Stack: Python, TensorFlow, TinyML, ESP32."
     ]
   }
 ]

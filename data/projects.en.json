@@ -1,7 +1,7 @@
 [
   {
     "id": "Werkstudent - Sensor- & HMI-Softwareentwicklung (Python)",
-    "title": "Werkstudent - Sensor- & HMI-Softwareentwicklung",
+    "title": "Sensor- & HMI-Softwareentwicklung",
     "tag": "Embedded Systems · Python · HMI",
     "preview": "images/project-sensor-hmi.svg",
     "previewAlt": "Sensor and HMI software development project preview",
@@ -11,12 +11,12 @@
       "Role: Sole developer responsible for device communication, HMI logic, and system integration.",
       "Responsibilities: State machine design, sensor communication, data visualization, testing, and documentation.",
       "Outcome: A stable and fault-tolerant system enabling real-time sensor control and monitoring.",
-      "Stack: Python, TensorFlow, Multiprocessing, Embedded Hardware."
+      "Stack: Python, Multiprocessing, Embedded Hardware."
     ]
   },
   {
-    "id": "Werkstudent - IoT & Cloud Datenpipeline (Python)",
-    "title": "Werkstudent - IoT & Cloud Datenpipeline",
+    "id": "IoT & Cloud Datenpipeline (Python)",
+    "title": "IoT & Cloud Datenpipeline",
     "tag": "IoT · Backend · Data Visualization",
     "preview": "images/project-iot-cloud.svg",
     "previewAlt": "IoT and cloud data pipeline project preview",
@@ -41,7 +41,7 @@
       "Role: Sole developer responsible for analysis, refactoring, and system optimization.",
       "Responsibilities: Debugging, architecture improvement, real-time data handling, testing, and documentation.",
       "Outcome: Improved data reliability and responsiveness, enabling stable real-time visualization and device control.",
-      "Stack: Python, PySide / Qt, Matplotlib, Linux, Embedded Hardware."
+      "Stack: Python, PySide, Matplotlib, Linux, Embedded Hardware."
     ]
   },
   {
@@ -56,7 +56,7 @@
       "Role: Team member focusing on dataset processing and technical documentation.",
       "Responsibilities: Omniglot dataset handling, evaluation, and contribution to the project report.",
       "Outcome: Successful deployment and evaluation of a neural network on resource-constrained hardware.",
-      "Stack: Python, TinyML, ESP32."
+      "Stack: Python, TensorFlow, TinyML, ESP32."
     ]
   }
 ]

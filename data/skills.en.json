@@ -3,20 +3,26 @@
     "title": "Languages",
     "items": [
       "Chinese - Native",
-      "English - Professional proficiency",
-      "German - Very good proficiency"
+      "English - Fluent",
+      "German - Fluent"
     ]
   },
   {
     "title": "Skills",
     "layout": "tags",
     "items": [
+      "Software Development",
+      "Code Analysis",
+      "Requirements Analysis",
+      "Technical Design",
       "Python",
+      "GitHub",
       "Java",
       "C/C++",
-      "GitHub",
-      "MS Office Suite",
-      "LaTeX"
+      "Docker",
+      "Linux",
+      "AWS Cloud",
+      "Microsoft Office Suite"
     ]
   }
 ]

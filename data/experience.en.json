@@ -4,9 +4,12 @@
     "title": "R&D Test and Development Engineer",
     "company": "nanoDUST GmbH",
     "summary": [
-      "Software development for the sensor module (Python): SIM card, IoT Core (AWS).",
-      "GUI for live visualization and control of device data.",
-      "Automated transfer to the cloud database."
+      "Design and implementation of cloud-based components using AWS IoT Core and Lambda",
+      "Storage, querying, and analysis of historical sensor data",
+      "Extension of a PySide-based desktop application for debugging and monitoring purposes",
+      "Development of a lightweight web-based application (Flask) for data visualization and device control",
+      "Refactoring of code structure to improve maintainability and system robustness",
+      "Implementation of automated deployment pipelines"
     ]
   },
   {
@@ -14,10 +17,10 @@
     "title": "Research Associate",
     "company": "TH Aschaffenburg",
     "summary": [
-      "Data visualization and reporting with AWS QuickSight.",
-      "Data visualization and device control via a simple web app (Flask).",
-      "Transformation and cleaning of raw sensor data with Python.",
-      "Blockchain analysis and integration into sensor data processing."
+      "Analysis of root causes and derivation of measures to improve system stability",
+      "Integration of the sensor system with AWS cloud services",
+      "Integration of additional data sources, including blockchain data",
+      "Creation of dashboards and reports for data analysis"
     ]
   },
   {
@@ -25,9 +28,9 @@
     "title": "Working Student",
     "company": "nanoDUST GmbH",
     "summary": [
-      "Data processing with Pandas and NumPy.",
-      "Sensor module development (Python): sensor communication, Linux, state machine.",
-      "HMI GUI for live visualization and control of device data."
+      "Development of a locally running Python service for sensor data acquisition",
+      "Design and implementation of a state machine",
+      "Basic error handling and sensor communication"
     ]
   }
 ]

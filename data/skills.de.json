@@ -3,20 +3,26 @@
     "title": "Sprache",
     "items": [
       "Chinese - Muttersprache",
-      "English - Gute Kenntnisse ",
-      "Deutsch - Sehr gute Kenntnisse"
+      "English - Verhandlungssicher",
+      "Deutsch - Verhandlungssicher"
     ]
   },
   {
     "title": "Fähigkeiten",
     "layout": "tags",
     "items": [
+      "Softwareentwicklung",
+      "Code-Analysen",
+      "Anforderungsanalyse",
+      "Technische Konzeption",
       "Python",
+      "GitHub",
       "Java",
       "C/C++",
-      "GitHub",
-      "MS Office Suite",
-      "LaTex"
+      "Docker",
+      "Linux",
+      "AWS Cloud",
+      "MS Office Suite"
     ]
   }
 ]

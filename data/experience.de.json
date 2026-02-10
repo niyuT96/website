@@ -4,9 +4,12 @@
     "title": "R&D Test- und Entwicklungsingenieur/in",
     "company": "nanoDUST GmbH",
     "summary": [
-      "Software-Entwicklung des Sensormoduls (Python): SIM Karte, IoT Core (AWS)",
-      "GUI zur Live-Visualisierung und Steuerung von Gerätedaten.",
-      "Automatisierte Übertragung in die Cloud-Datenbank."
+      "Aufbau cloudbasierter Komponenten mit AWS IoT Core und Lambda",
+      "Speicherung, Abfrage und Analyse historischer Sensordaten",
+      "Erweiterung einer PySide-basierten Desktop-Anwendung für Debugging und Monitoring",
+      "Aufbau einer einfachen webbasierten Anwendung (Flask) zur Datenvisualisierung und Gerätesteuerung",
+      "Refactoring der Codestruktur zur Verbesserung der Wartbarkeit und Systemrobustheit",
+      "Implementierung automatisierter Deployment-Pipelines"
     ]
   },
   {
@@ -14,10 +17,10 @@
     "title": "Wissenschaftliche/r Mitarbeiter/in",
     "company": "TH Aschaffenburg",
     "summary": [
-      "Datenvisualisierung und Reporting mit AWS QuickSight.",
-      "Datenvisualisierung und Gerätesteuerung mit einer einfachen Website (Flask)",
-      "Transformation und Bereinigung der Rohdaten von Sensor mit Python.",
-      "Blockchain-Analyse und Integration in Sensordatenverarbeitung."
+      "Analyse von Fehlerursachen und Ableitung von Stabilisierungsmaßnahmen",
+      "Anbindung des Sensorsystems an AWS-Cloud-Dienste",
+      "Integration zusätzlicher Datenquellen einschließlich Blockchain-Daten",
+      "Erstellung von Dashboards und Reports zur Datenanalyse"
     ]
   },
   {
@@ -25,9 +28,9 @@
     "title": "Werkstudent",
     "company": "nanoDUST GmbH",
     "summary": [
-      "Datenverarbeitung mit Pandas und Numpy.",
-      "Software-Entwicklung des Sensormoduls (Python): Sensor Kommunikation, Linux, State machine.",
-      "Entwicklung des GUI in einem HMI Bildschirm zur Live-Visualisierung und Steuerung von Gerätedaten."
+      "Entwicklung eines lokalen Python-Services zur Sensordatenerfassung",
+      "Entwurf und Implementierung einer Zustandsmaschine",
+      "Grundlegende Fehlerbehandlung und Sensor-Kommunikation"
     ]
   }
 ]
