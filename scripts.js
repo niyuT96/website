@@ -30,6 +30,76 @@ const loadJsonWithFallback = async (paths) => {
   throw new Error(`Failed to load ${paths.join(", ")}`);
 };
 
+const supportedLangs = new Set(["de", "en"]);
+const storageKey = "siteLang";
+const contentBasePath = "data/content";
+const themePath = "data/theme.json";
+const defaultBehaviorConfig = {
+  defaultLang: "de",
+  breakpoints: {
+    tablet: 900,
+    mobile: 600,
+    smallMobile: 480
+  },
+  projects: {
+    scrollRatio: 0.9,
+    maxScrollPx: 480
+  }
+};
+
+let behaviorConfig = {
+  defaultLang: defaultBehaviorConfig.defaultLang,
+  breakpoints: { ...defaultBehaviorConfig.breakpoints },
+  projects: { ...defaultBehaviorConfig.projects }
+};
+
+const getBreakpoint = (name) =>
+  behaviorConfig.breakpoints[name] ?? defaultBehaviorConfig.breakpoints[name];
+
+const getProjectBehavior = (name) =>
+  behaviorConfig.projects[name] ?? defaultBehaviorConfig.projects[name];
+
+const loadBehaviorConfig = async () => {
+  try {
+    const data = await loadJson("data/behavior.json");
+    const nextDefaultLang = supportedLangs.has(data?.defaultLang)
+      ? data.defaultLang
+      : defaultBehaviorConfig.defaultLang;
+
+    behaviorConfig = {
+      defaultLang: nextDefaultLang,
+      breakpoints: {
+        ...defaultBehaviorConfig.breakpoints,
+        ...(data?.breakpoints || {})
+      },
+      projects: {
+        ...defaultBehaviorConfig.projects,
+        ...(data?.projects || {})
+      }
+    };
+  } catch (error) {
+    console.warn("Falling back to default behavior config.", error);
+  }
+};
+
+const applyTheme = (tokens) => {
+  if (!tokens || typeof tokens !== "object") return;
+
+  Object.entries(tokens).forEach(([name, value]) => {
+    if (value === undefined || value === null || value === "") return;
+    document.documentElement.style.setProperty(`--${name}`, String(value));
+  });
+};
+
+const loadThemeConfig = async () => {
+  try {
+    const data = await loadJson(themePath);
+    applyTheme(data.cssVariables || data);
+  } catch (error) {
+    console.warn("Falling back to default theme config.", error);
+  }
+};
+
 const renderSite = (data) => {
   if (!data) return;
 
@@ -244,7 +314,7 @@ const syncSkillsCardHeight = () => {
   if (!languageCard || !skillsCard) return;
 
   languageCard.style.height = "";
-  if (window.innerWidth <= 900) return;
+  if (window.innerWidth <= getBreakpoint("tablet")) return;
 
   const targetHeight = Math.ceil(skillsCard.getBoundingClientRect().height);
   if (targetHeight > 0) {
@@ -323,7 +393,10 @@ const setupProjectsCarousel = () => {
   };
 
   const scrollByAmount = (direction) => {
-    const amount = Math.min(cardsContainer.clientWidth * 0.9, 480);
+    const amount = Math.min(
+      cardsContainer.clientWidth * getProjectBehavior("scrollRatio"),
+      getProjectBehavior("maxScrollPx")
+    );
     cardsContainer.scrollBy({ left: amount * direction, behavior: "smooth" });
   };
 
@@ -387,10 +460,6 @@ const initProjectModals = () => {
   });
 };
 
-const supportedLangs = new Set(["de", "en"]);
-const defaultLang = "de";
-const storageKey = "siteLang";
-
 const getInitialLang = () => {
   const params = new URLSearchParams(window.location.search);
   const urlLang = params.get("lang");
@@ -401,7 +470,7 @@ const getInitialLang = () => {
   if (supportedLangs.has(stored)) {
     return stored;
   }
-  return defaultLang;
+  return behaviorConfig.defaultLang;
 };
 
 const setActiveLangButton = (lang) => {
@@ -415,8 +484,8 @@ const setActiveLangButton = (lang) => {
 const loadLanguageData = async (lang) => {
   const suffix = supportedLangs.has(lang) ? `.${lang}` : "";
   const withFallback = (name) => [
-    `data/${name}${suffix}.json`,
-    `data/${name}.json`
+    `${contentBasePath}/${name}${suffix}.json`,
+    `${contentBasePath}/${name}.json`
   ];
 
   const [site, projects, experiences, skills, education] = await Promise.all([
@@ -479,7 +548,7 @@ const initMobileNav = () => {
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 900) {
+    if (window.innerWidth > getBreakpoint("tablet")) {
       setOpen(false);
     }
   });
@@ -487,6 +556,7 @@ const initMobileNav = () => {
 
 const initPage = async () => {
   await loadSections();
+  await Promise.all([loadBehaviorConfig(), loadThemeConfig()]);
   initMobileNav();
   initSkillsHeightSync();
   initLanguageSwitcher();

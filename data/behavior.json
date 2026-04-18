@@ -1,0 +1,12 @@
+{
+  "defaultLang": "de",
+  "breakpoints": {
+    "tablet": 900,
+    "mobile": 600,
+    "smallMobile": 480
+  },
+  "projects": {
+    "scrollRatio": 0.9,
+    "maxScrollPx": 480
+  }
+}
