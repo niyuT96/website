@@ -4,7 +4,7 @@ Theme
 
 Behavior
 - file: data/behavior.json
-- fields: defaultLang, breakpoints, projects
+- fields: defaultLang, screens, projects, screenSettings
 
 Content
 - dir: data/content/

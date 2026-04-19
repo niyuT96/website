@@ -1,12 +1,28 @@
 {
   "defaultLang": "de",
-  "breakpoints": {
-    "tablet": 900,
-    "mobile": 600,
-    "smallMobile": 480
+  "screens": {
+    "phoneMax": 599,
+    "tabletMax": 899
   },
   "projects": {
     "scrollRatio": 0.9,
     "maxScrollPx": 480
+  },
+  "screenSettings": {
+    "phone": {
+      "space-page": "clamp(1.5rem, 5vw, 2.75rem) clamp(0.875rem, 4vw, 1.125rem) clamp(2.5rem, 6vw, 3rem)",
+      "hero-padding": "clamp(1.5rem, 4vw, 1.75rem) clamp(1.125rem, 4.5vw, 1.5rem) clamp(2rem, 6vw, 2.5rem)",
+      "project-card-basis": "clamp(15rem, 86vw, 22rem)"
+    },
+    "tablet": {
+      "space-page": "3rem 1.25rem 3.5rem",
+      "hero-padding": "2rem 2rem 3.25rem",
+      "project-card-basis": "clamp(15rem, 44vw, 22rem)"
+    },
+    "desktop": {
+      "space-page": "3rem 1.5rem 3.75rem",
+      "hero-padding": "2.25rem 2.625rem 3.75rem",
+      "project-card-basis": "clamp(15rem, 38vw, 22.5rem)"
+    }
   }
 }

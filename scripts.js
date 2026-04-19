@@ -36,28 +36,63 @@ const contentBasePath = "data/content";
 const themePath = "data/theme.json";
 const defaultBehaviorConfig = {
   defaultLang: "de",
-  breakpoints: {
-    tablet: 900,
-    mobile: 600,
-    smallMobile: 480
+  screens: {
+    phoneMax: 599,
+    tabletMax: 899
   },
   projects: {
     scrollRatio: 0.9,
     maxScrollPx: 480
+  },
+  screenSettings: {
+    phone: {
+      "space-page": "clamp(1.5rem, 5vw, 2.75rem) clamp(0.875rem, 4vw, 1.125rem) clamp(2.5rem, 6vw, 3rem)",
+      "hero-padding": "clamp(1.5rem, 4vw, 1.75rem) clamp(1.125rem, 4.5vw, 1.5rem) clamp(2rem, 6vw, 2.5rem)",
+      "project-card-basis": "clamp(15rem, 86vw, 22rem)"
+    },
+    tablet: {
+      "space-page": "3rem 1.25rem 3.5rem",
+      "hero-padding": "2rem 2rem 3.25rem",
+      "project-card-basis": "clamp(15rem, 44vw, 22rem)"
+    },
+    desktop: {
+      "space-page": "3rem 1.5rem 3.75rem",
+      "hero-padding": "2.25rem 2.625rem 3.75rem",
+      "project-card-basis": "clamp(15rem, 38vw, 22.5rem)"
+    }
   }
 };
 
+const cloneScreenSettings = (screenSettings = defaultBehaviorConfig.screenSettings) => ({
+  phone: {
+    ...defaultBehaviorConfig.screenSettings.phone,
+    ...(screenSettings.phone || {})
+  },
+  tablet: {
+    ...defaultBehaviorConfig.screenSettings.tablet,
+    ...(screenSettings.tablet || {})
+  },
+  desktop: {
+    ...defaultBehaviorConfig.screenSettings.desktop,
+    ...(screenSettings.desktop || {})
+  }
+});
+
 let behaviorConfig = {
   defaultLang: defaultBehaviorConfig.defaultLang,
-  breakpoints: { ...defaultBehaviorConfig.breakpoints },
-  projects: { ...defaultBehaviorConfig.projects }
+  screens: { ...defaultBehaviorConfig.screens },
+  projects: { ...defaultBehaviorConfig.projects },
+  screenSettings: cloneScreenSettings()
 };
-
-const getBreakpoint = (name) =>
-  behaviorConfig.breakpoints[name] ?? defaultBehaviorConfig.breakpoints[name];
 
 const getProjectBehavior = (name) =>
   behaviorConfig.projects[name] ?? defaultBehaviorConfig.projects[name];
+
+const getScreenMode = (width = window.innerWidth) => {
+  if (width <= behaviorConfig.screens.phoneMax) return "phone";
+  if (width <= behaviorConfig.screens.tabletMax) return "tablet";
+  return "desktop";
+};
 
 const loadBehaviorConfig = async () => {
   try {
@@ -68,14 +103,15 @@ const loadBehaviorConfig = async () => {
 
     behaviorConfig = {
       defaultLang: nextDefaultLang,
-      breakpoints: {
-        ...defaultBehaviorConfig.breakpoints,
-        ...(data?.breakpoints || {})
+      screens: {
+        ...defaultBehaviorConfig.screens,
+        ...(data?.screens || {})
       },
       projects: {
         ...defaultBehaviorConfig.projects,
         ...(data?.projects || {})
-      }
+      },
+      screenSettings: cloneScreenSettings(data?.screenSettings)
     };
   } catch (error) {
     console.warn("Falling back to default behavior config.", error);
@@ -98,6 +134,22 @@ const loadThemeConfig = async () => {
   } catch (error) {
     console.warn("Falling back to default theme config.", error);
   }
+};
+
+let screenModeBound = false;
+
+const applyScreenMode = () => {
+  const mode = getScreenMode();
+  document.documentElement.dataset.screen = mode;
+  applyTheme(behaviorConfig.screenSettings[mode]);
+  return mode;
+};
+
+const initScreenMode = () => {
+  applyScreenMode();
+  if (screenModeBound) return;
+  window.addEventListener("resize", applyScreenMode, { passive: true });
+  screenModeBound = true;
 };
 
 const renderSite = (data) => {
@@ -314,7 +366,7 @@ const syncSkillsCardHeight = () => {
   if (!languageCard || !skillsCard) return;
 
   languageCard.style.height = "";
-  if (window.innerWidth <= getBreakpoint("tablet")) return;
+  if (getScreenMode() !== "desktop") return;
 
   const targetHeight = Math.ceil(skillsCard.getBoundingClientRect().height);
   if (targetHeight > 0) {
@@ -548,7 +600,7 @@ const initMobileNav = () => {
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > getBreakpoint("tablet")) {
+    if (getScreenMode() !== "phone") {
       setOpen(false);
     }
   });
@@ -557,6 +609,7 @@ const initMobileNav = () => {
 const initPage = async () => {
   await loadSections();
   await Promise.all([loadBehaviorConfig(), loadThemeConfig()]);
+  initScreenMode();
   initMobileNav();
   initSkillsHeightSync();
   initLanguageSwitcher();
