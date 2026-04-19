@@ -65,6 +65,9 @@
   --sidebar-font-weight: 500;
   --sidebar-line-height: 1.5;
   --sidebar-text-color: #18181b;
+  --lang-button-min-width: 5.5rem;
+  --lang-button-height: 3.125rem;
+  --lang-button-radius: 1rem;
   --section-gap: 1.75rem;
   --section-title-gap: 0.5rem;
   --section-lead-max-width: 42.5rem;
@@ -127,6 +130,7 @@ body {
 
 .language-block {
   min-width: 0;
+  width: 100%;
 }
 
 .navigation-block {
@@ -270,28 +274,56 @@ body {
 
 .lang-switch {
   display: flex;
-  gap: 0.5rem;
+  width: 100%;
   align-items: center;
+  justify-content: space-between;
 }
 
 .lang-button {
-  border: 1px solid var(--line-soft);
-  background: var(--surface);
-  color: var(--sidebar-text-color);
-  padding: 0.375rem 0.75rem;
-  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--lang-button-min-width);
+  min-height: var(--lang-button-height);
+  border: 1px solid var(--line-accent);
+  background: transparent;
+  color: var(--text-strong);
+  padding: 0.5rem 1rem;
+  border-radius: var(--lang-button-radius);
   font-family: var(--sidebar-font-family);
   font-size: var(--sidebar-font-size);
   font-weight: var(--sidebar-font-weight);
   line-height: var(--sidebar-line-height);
   cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
 }
 
 .lang-button.is-active {
-  background: var(--accent-soft);
-  color: var(--text-strong);
+  background: var(--accent);
+  color: var(--text-on-accent);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.lang-button:hover {
+  transform: translateY(-1px);
+}
+
+.lang-button.is-active:hover {
+  background: #325fe0;
+  box-shadow: var(--shadow-accent);
+}
+
+.lang-button:not(.is-active):hover {
+  background: var(--surface-subtle);
   border-color: var(--line-accent-soft);
+  color: var(--accent-strong);
 }
 
 .nav a {
@@ -1013,13 +1045,8 @@ html[data-screen="desktop"] .nav-links a {
   width: 100%;
 }
 
-html[data-screen="desktop"] .language-block {
-  order: 3;
-}
-
 html[data-screen="desktop"] .lang-switch {
-  justify-content: flex-start;
-  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 html[data-screen="desktop"] .hero {
@@ -1097,6 +1124,7 @@ html[data-screen="phone"] .nav-links a {
 }
 
 html[data-screen="phone"] .lang-switch {
+  width: auto;
   flex-wrap: nowrap;
   justify-content: flex-end;
   margin-left: auto;
@@ -1112,8 +1140,10 @@ html[data-screen="phone"] .lang-switch {
 }
 
 html[data-screen="phone"] .lang-button {
-  padding: 0.3125rem 0.625rem;
-  font-size: var(--sidebar-font-size);
+  min-width: 4.5rem;
+  min-height: 2.75rem;
+  padding: 0.375rem 0.875rem;
+  font-size: 1rem;
 }
 
 html[data-screen="phone"] body {
