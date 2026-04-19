@@ -20,105 +20,70 @@ const loadJson = async (path) => {
   return response.json();
 };
 
-const loadJsonWithFallback = async (paths) => {
-  for (const path of paths) {
-    const response = await fetch(path, { cache: "no-store" });
-    if (response.ok) {
-      return response.json();
-    }
-  }
-  throw new Error(`Failed to load ${paths.join(", ")}`);
-};
-
 const supportedLangs = new Set(["de", "en"]);
+const screenModes = ["phone", "tablet", "desktop"];
 const storageKey = "siteLang";
 const contentBasePath = "data/content";
 const themePath = "data/theme.json";
-const defaultBehaviorConfig = {
-  defaultLang: "de",
-  screens: {
-    phoneMax: 599,
-    tabletMax: 899
-  },
-  projects: {
-    scrollRatio: 0.9,
-    maxScrollPx: 480
-  },
-  screenSettings: {
-    phone: {
-      "space-page": "clamp(1.5rem, 5vw, 2.75rem) clamp(0.875rem, 4vw, 1.125rem) clamp(2.5rem, 6vw, 3rem)",
-      "hero-padding": "clamp(1.5rem, 4vw, 1.75rem) clamp(1.125rem, 4.5vw, 1.5rem) clamp(2rem, 6vw, 2.5rem)",
-      "project-card-basis": "clamp(15rem, 86vw, 22rem)"
-    },
-    tablet: {
-      "space-page": "3rem 1.25rem 3.5rem",
-      "hero-padding": "2rem 2rem 3.25rem",
-      "project-card-basis": "clamp(15rem, 44vw, 22rem)"
-    },
-    desktop: {
-      "space-page": "3rem 1.5rem 3.75rem",
-      "hero-padding": "2.25rem 2.625rem 3.75rem",
-      "project-card-basis": "clamp(15rem, 38vw, 22.5rem)"
-    }
-  }
-};
+const defaultLang = "de";
 
-const cloneScreenSettings = (screenSettings = defaultBehaviorConfig.screenSettings) => ({
-  phone: {
-    ...defaultBehaviorConfig.screenSettings.phone,
-    ...(screenSettings.phone || {})
-  },
-  tablet: {
-    ...defaultBehaviorConfig.screenSettings.tablet,
-    ...(screenSettings.tablet || {})
-  },
-  desktop: {
-    ...defaultBehaviorConfig.screenSettings.desktop,
-    ...(screenSettings.desktop || {})
-  }
-});
+const cloneScreenSettings = (screenSettings = {}) =>
+  screenModes.reduce((modes, mode) => {
+    modes[mode] =
+      screenSettings[mode] && typeof screenSettings[mode] === "object"
+        ? { ...screenSettings[mode] }
+        : {};
+    return modes;
+  }, {});
 
 let behaviorConfig = {
-  defaultLang: defaultBehaviorConfig.defaultLang,
-  screens: { ...defaultBehaviorConfig.screens },
-  projects: { ...defaultBehaviorConfig.projects },
+  defaultLang,
+  screens: null,
+  projects: {},
   screenSettings: cloneScreenSettings()
 };
 
-const getProjectBehavior = (name) =>
-  behaviorConfig.projects[name] ?? defaultBehaviorConfig.projects[name];
+const getProjectBehavior = (name) => behaviorConfig.projects[name];
+
+const normalizeScreens = (screens = {}) => {
+  const phoneMax = Number(screens.phoneMax);
+  const tabletMax = Number(screens.tabletMax);
+
+  if (!Number.isFinite(phoneMax) || !Number.isFinite(tabletMax) || phoneMax >= tabletMax) {
+    throw new Error("Invalid screen thresholds in data/behavior.json");
+  }
+
+  return { phoneMax, tabletMax };
+};
+
+const normalizeProjectBehavior = (projects = {}) => {
+  const scrollRatio = Number(projects.scrollRatio);
+  const maxScrollPx = Number(projects.maxScrollPx);
+
+  if (!Number.isFinite(scrollRatio) || !Number.isFinite(maxScrollPx)) {
+    throw new Error("Invalid project behavior in data/behavior.json");
+  }
+
+  return { scrollRatio, maxScrollPx };
+};
+
+const normalizeBehaviorConfig = (data = {}) => ({
+  defaultLang: supportedLangs.has(data.defaultLang) ? data.defaultLang : defaultLang,
+  screens: normalizeScreens(data.screens),
+  projects: normalizeProjectBehavior(data.projects),
+  screenSettings: cloneScreenSettings(data.screenSettings)
+});
 
 const getScreenMode = (width = window.innerWidth) => {
+  if (!behaviorConfig.screens) {
+    throw new Error("Screen behavior config is not loaded.");
+  }
   if (width <= behaviorConfig.screens.phoneMax) return "phone";
   if (width <= behaviorConfig.screens.tabletMax) return "tablet";
   return "desktop";
 };
 
-const loadBehaviorConfig = async () => {
-  try {
-    const data = await loadJson("data/behavior.json");
-    const nextDefaultLang = supportedLangs.has(data?.defaultLang)
-      ? data.defaultLang
-      : defaultBehaviorConfig.defaultLang;
-
-    behaviorConfig = {
-      defaultLang: nextDefaultLang,
-      screens: {
-        ...defaultBehaviorConfig.screens,
-        ...(data?.screens || {})
-      },
-      projects: {
-        ...defaultBehaviorConfig.projects,
-        ...(data?.projects || {})
-      },
-      screenSettings: cloneScreenSettings(data?.screenSettings)
-    };
-  } catch (error) {
-    console.warn("Falling back to default behavior config.", error);
-  }
-};
-
-const applyTheme = (tokens) => {
+const applyCssVariables = (tokens) => {
   if (!tokens || typeof tokens !== "object") return;
 
   Object.entries(tokens).forEach(([name, value]) => {
@@ -127,10 +92,13 @@ const applyTheme = (tokens) => {
   });
 };
 
-const loadThemeConfig = async () => {
+const loadRuntimeConfig = async () => {
+  const behaviorData = await loadJson("data/behavior.json");
+  behaviorConfig = normalizeBehaviorConfig(behaviorData);
+
   try {
-    const data = await loadJson(themePath);
-    applyTheme(data.cssVariables || data);
+    const themeData = await loadJson(themePath);
+    applyCssVariables(themeData.cssVariables || themeData);
   } catch (error) {
     console.warn("Falling back to default theme config.", error);
   }
@@ -141,7 +109,7 @@ let screenModeBound = false;
 const applyScreenMode = () => {
   const mode = getScreenMode();
   document.documentElement.dataset.screen = mode;
-  applyTheme(behaviorConfig.screenSettings[mode]);
+  applyCssVariables(behaviorConfig.screenSettings[mode]);
   return mode;
 };
 
@@ -608,7 +576,7 @@ const initMobileNav = () => {
 
 const initPage = async () => {
   await loadSections();
-  await Promise.all([loadBehaviorConfig(), loadThemeConfig()]);
+  await loadRuntimeConfig();
   initScreenMode();
   initMobileNav();
   initSkillsHeightSync();

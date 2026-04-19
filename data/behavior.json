@@ -12,17 +12,47 @@
     "phone": {
       "space-page": "clamp(1.5rem, 5vw, 2.75rem) clamp(0.875rem, 4vw, 1.125rem) clamp(2.5rem, 6vw, 3rem)",
       "hero-padding": "clamp(1.5rem, 4vw, 1.75rem) clamp(1.125rem, 4.5vw, 1.5rem) clamp(2rem, 6vw, 2.5rem)",
-      "project-card-basis": "clamp(15rem, 86vw, 22rem)"
+      "project-card-basis": "clamp(15rem, 86vw, 22rem)",
+      "space-card-padding": "1.25rem",
+      "space-panel-padding": "1.25rem",
+      "space-contact-padding": "1.25rem",
+      "projects-track-gap": "1rem",
+      "modal-overlay-padding": "calc(0.75rem + env(safe-area-inset-top)) 0.75rem calc(0.875rem + env(safe-area-inset-bottom))",
+      "modal-place-items": "start center",
+      "modal-panel-width": "100%",
+      "modal-panel-max-width": "100%",
+      "modal-panel-max-height": "min(72dvh, calc(100dvh - 1.875rem - env(safe-area-inset-top) - env(safe-area-inset-bottom)))",
+      "modal-panel-padding": "1.75rem 1.25rem 1.25rem"
     },
     "tablet": {
       "space-page": "3rem 1.25rem 3.5rem",
       "hero-padding": "2rem 2rem 3.25rem",
-      "project-card-basis": "clamp(15rem, 44vw, 22rem)"
+      "project-card-basis": "clamp(15rem, 44vw, 22rem)",
+      "space-card-padding": "1.5rem",
+      "space-panel-padding": "1.75rem",
+      "space-contact-padding": "1.75rem",
+      "projects-track-gap": "1.375rem",
+      "modal-overlay-padding": "1.5rem",
+      "modal-place-items": "center",
+      "modal-panel-width": "min(90vw, 32.5rem)",
+      "modal-panel-max-width": "32.5rem",
+      "modal-panel-max-height": "min(65vh, 40rem)",
+      "modal-panel-padding": "2rem 1.875rem 1.75rem"
     },
     "desktop": {
       "space-page": "3rem 1.5rem 3.75rem",
       "hero-padding": "2.25rem 2.625rem 3.75rem",
-      "project-card-basis": "clamp(15rem, 38vw, 22.5rem)"
+      "project-card-basis": "clamp(15rem, 38vw, 22.5rem)",
+      "space-card-padding": "1.5rem",
+      "space-panel-padding": "1.75rem",
+      "space-contact-padding": "2rem",
+      "projects-track-gap": "1.375rem",
+      "modal-overlay-padding": "1.5rem",
+      "modal-place-items": "center",
+      "modal-panel-width": "min(90vw, 32.5rem)",
+      "modal-panel-max-width": "32.5rem",
+      "modal-panel-max-height": "min(65vh, 40rem)",
+      "modal-panel-padding": "2rem 1.875rem 1.75rem"
     }
   }
 }

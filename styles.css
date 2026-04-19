@@ -12,19 +12,7 @@
   --shadow-modal: 0 24px 48px rgba(8, 20, 42, 0.24);
   --radius: 1.375rem;
   --radius-lg: 2rem;
-  --space-page: 3rem 1.5rem 3.75rem;
   --space-section-gap: 4.5rem;
-  --space-card-padding: 1.5rem;
-  --space-card-padding-small: 1.25rem;
-  --space-panel-padding: 1.75rem;
-  --space-panel-padding-small: 1.25rem;
-  --space-contact-padding: 2rem;
-  --hero-padding: 2.25rem 2.625rem 3.75rem;
-  --project-card-basis: clamp(15rem, 38vw, 22.5rem);
-  --modal-max-width: 32.5rem;
-  --modal-max-height: 65vh;
-  --modal-padding: 2rem 1.875rem 1.75rem;
-  --modal-mobile-max-height: 72dvh;
   font-size: 100%;
 }
 
@@ -277,6 +265,10 @@ h1 {
   color: var(--ink);
 }
 
+.hero-metrics span {
+  font-size: clamp(0.88rem, 1.6vw, 1rem);
+}
+
 .hero-card {
   background: transparent;
   padding: 0;
@@ -448,7 +440,7 @@ h1 {
 
 .projects-track {
   display: flex;
-  gap: 1.375rem;
+  gap: var(--projects-track-gap);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding-bottom: 0.5rem;
@@ -503,8 +495,9 @@ h1 {
   inset: 0;
   background: rgba(10, 18, 32, 0.6);
   display: grid;
-  place-items: center;
-  padding: 1.5rem;
+  place-items: var(--modal-place-items);
+  padding: var(--modal-overlay-padding);
+  overflow-y: auto;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
@@ -519,10 +512,10 @@ h1 {
 .modal-panel {
   background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
   border-radius: 0 !important;
-  padding: var(--modal-padding);
-  max-width: var(--modal-max-width);
-  width: min(90vw, var(--modal-max-width));
-  max-height: min(var(--modal-max-height), 40rem);
+  padding: var(--modal-panel-padding);
+  width: var(--modal-panel-width);
+  max-width: var(--modal-panel-max-width);
+  max-height: var(--modal-panel-max-height);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
@@ -609,7 +602,7 @@ h1 {
 .timeline {
   background: var(--surface);
   border-radius: var(--radius-lg);
-  padding: 1.75rem;
+  padding: var(--space-panel-padding);
   box-shadow: var(--shadow);
   display: grid;
   gap: 1.375rem;
@@ -646,7 +639,7 @@ h1 {
   gap: 1.125rem;
   background: var(--surface);
   border-radius: var(--radius-lg);
-  padding: 1.75rem;
+  padding: var(--space-panel-padding);
   box-shadow: var(--shadow);
 }
 
@@ -829,14 +822,45 @@ html[data-screen="phone"] .page {
 
 html[data-screen="phone"] .nav {
   display: flex;
+  align-items: flex-start;
   justify-content: flex-end;
   margin-bottom: 1.25rem;
 }
 
-html[data-screen="phone"] .logo,
-html[data-screen="phone"] .nav-links,
-html[data-screen="phone"] .nav-toggle {
+html[data-screen="phone"] .logo {
   display: none;
+}
+
+html[data-screen="phone"] .nav-toggle {
+  display: inline-flex;
+  position: fixed;
+  top: clamp(0.5rem, 2vw, 0.625rem);
+  left: clamp(0.625rem, 2vw, 0.75rem);
+  z-index: 60;
+}
+
+html[data-screen="phone"] .nav-links {
+  display: none;
+  position: fixed;
+  top: calc(clamp(0.5rem, 2vw, 0.625rem) + 3.5rem);
+  left: clamp(0.625rem, 2vw, 0.75rem);
+  right: clamp(0.625rem, 2vw, 0.75rem);
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #dbe4ff;
+  border-radius: 1.125rem;
+  padding: 0.75rem;
+  box-shadow: 0 16px 28px rgba(13, 35, 82, 0.16);
+  z-index: 59;
+}
+
+html[data-screen="phone"] .nav-links.is-open {
+  display: grid;
+  gap: 0.25rem;
+}
+
+html[data-screen="phone"] .nav-links a {
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.875rem;
 }
 
 html[data-screen="phone"] .lang-switch {
@@ -904,6 +928,10 @@ html[data-screen="phone"] .hero-actions {
   align-items: flex-start;
 }
 
+html[data-screen="phone"] .hero-actions .btn {
+  width: 100%;
+}
+
 html[data-screen="phone"] .hero-metrics {
   flex-direction: row;
   flex-wrap: nowrap;
@@ -938,44 +966,4 @@ html[data-screen="phone"] .contact-grid {
 
 html[data-screen="phone"] .projects-controls {
   justify-content: center;
-}
-
-@media (max-width: 480px) {
-  .hero-metrics span {
-    font-size: 0.88rem;
-  }
-
-  .modal {
-    place-items: start center;
-    padding: calc(0.75rem + env(safe-area-inset-top)) 0.75rem calc(0.875rem + env(safe-area-inset-bottom));
-    overflow-y: auto;
-  }
-
-  .modal-panel {
-    width: 100%;
-    max-height: min(var(--modal-mobile-max-height), calc(100dvh - 1.875rem - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
-    margin: 0 auto;
-    border-radius: 0 !important;
-    padding: 1.75rem 1.25rem 1.25rem;
-  }
-
-  .hero-actions .btn {
-    width: 100%;
-  }
-
-  .timeline,
-  .education,
-  .skills-panel>div,
-  .contact {
-    padding: var(--space-panel-padding-small);
-  }
-
-  .card,
-  .contact-card {
-    padding: var(--space-card-padding-small);
-  }
-
-  .projects-track {
-    gap: 1rem;
-  }
 }
