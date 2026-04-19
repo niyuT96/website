@@ -20,6 +20,21 @@ const loadJson = async (path) => {
   return response.json();
 };
 
+const loadJsonWithFallback = async (paths) => {
+  const candidates = Array.isArray(paths) ? paths : [paths];
+  let lastError = null;
+
+  for (const path of candidates) {
+    try {
+      return await loadJson(path);
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError || new Error("Failed to load JSON data.");
+};
+
 const supportedLangs = new Set(["de", "en"]);
 const screenModes = ["phone", "tablet", "desktop"];
 const storageKey = "siteLang";
