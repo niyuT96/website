@@ -1,7 +1,7 @@
 :root {
   color-scheme: light;
   --bg: #f3f5fb;
-  --bg-page: radial-gradient(circle at top, #ffffff 0%, #eef3ff 45%, #e3eaf8 100%);
+  --bg-page: #bfdbfe;
   --surface: #ffffff;
   --surface-raised: #ffffff;
   --surface-subtle: #f7f9ff;
@@ -81,6 +81,74 @@ body {
   gap: var(--space-section-gap);
 }
 
+.app-shell {
+  display: grid;
+  gap: var(--space-section-gap);
+}
+
+.sidebar {
+  min-width: 0;
+}
+
+.sidebar-inner {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.identity-block,
+.language-block {
+  min-width: 0;
+}
+
+.sidebar-home {
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.navigation-block {
+  min-width: 0;
+}
+
+.main-content,
+.content-stack,
+.profile-section {
+  display: grid;
+  gap: var(--space-section-gap);
+  min-width: 0;
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.profile-slot {
+  min-width: 0;
+  display: grid;
+}
+
+.profile-module {
+  height: 100%;
+}
+
+.module-shell {
+  display: grid;
+  gap: 1.25rem;
+  height: 100%;
+}
+
+.module-head {
+  margin-bottom: 0;
+}
+
+.module-body {
+  display: grid;
+  gap: 1.25rem;
+  align-content: start;
+}
+
 .hero {
   background: url("images/hero.png") right bottom / cover no-repeat;
   border-radius: var(--radius-lg);
@@ -125,6 +193,10 @@ body {
   justify-content: space-between;
   margin-bottom: 3rem;
   position: relative;
+}
+
+.sidebar-nav {
+  margin-bottom: 0;
 }
 
 .logo {
@@ -675,18 +747,18 @@ h1 {
   color: var(--muted);
 }
 
-.info-list > li,
-.modal-list > li {
+.info-list>li,
+.modal-list>li {
   padding-block: 0.625rem;
   border-bottom: 1px solid var(--line-muted);
 }
 
-.modal-list > li:first-child {
+.modal-list>li:first-child {
   padding-top: 0;
 }
 
-.info-list > li:last-child,
-.modal-list > li:last-child {
+.info-list>li:last-child,
+.modal-list>li:last-child {
   padding-bottom: 0;
   border-bottom: none;
 }
@@ -744,11 +816,11 @@ h1 {
   overflow: hidden;
 }
 
-.skills-panel > div {
+.skills-panel>div {
   padding: var(--space-card-padding) var(--space-panel-padding);
 }
 
-.skills-panel > div + div {
+.skills-panel>div+div {
   border-left: 1px solid var(--line-muted);
 }
 
@@ -925,8 +997,72 @@ html[data-screen="phone"] {
 }
 
 html[data-screen="desktop"] .hero-content {
-  grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 22rem);
-  gap: clamp(2rem, 4vw, 4rem);
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.75rem;
+  max-width: min(100%, 46rem);
+}
+
+html[data-screen="desktop"] .app-shell {
+  grid-template-columns: minmax(15rem, 18rem) minmax(0, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: start;
+}
+
+html[data-screen="desktop"] .sidebar {
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+}
+
+html[data-screen="desktop"] .sidebar-inner {
+  padding: 1.5rem 1.25rem;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+html[data-screen="desktop"] .identity-block {
+  display: flex;
+  align-items: center;
+}
+
+html[data-screen="desktop"] .sidebar-nav {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  margin-bottom: 0;
+  gap: 1.25rem;
+}
+
+html[data-screen="desktop"] .navigation-block {
+  display: grid;
+  gap: 1rem;
+}
+
+html[data-screen="desktop"] .nav-links {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.875rem;
+}
+
+html[data-screen="desktop"] .nav-links a {
+  display: block;
+  width: 100%;
+}
+
+html[data-screen="desktop"] .language-block {
+  order: 3;
+}
+
+html[data-screen="desktop"] .lang-switch {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+html[data-screen="desktop"] .hero {
+  min-height: min(72vh, 36rem);
+  display: grid;
+  align-items: end;
 }
 
 html[data-screen="tablet"] .nav {
@@ -961,8 +1097,8 @@ html[data-screen="phone"] .skills-panel {
   grid-template-columns: 1fr;
 }
 
-html[data-screen="tablet"] .skills-panel > div + div,
-html[data-screen="phone"] .skills-panel > div + div {
+html[data-screen="tablet"] .skills-panel>div+div,
+html[data-screen="phone"] .skills-panel>div+div {
   border-left: none;
   border-top: 1px solid var(--line-muted);
 }
@@ -1093,7 +1229,7 @@ html[data-screen="phone"] .hero-metrics {
   text-align: left;
 }
 
-html[data-screen="phone"] .hero-metrics > div {
+html[data-screen="phone"] .hero-metrics>div {
   width: auto;
   max-width: none;
   margin-inline: 0;
@@ -1135,6 +1271,7 @@ html[data-screen="phone"] .projects-controls {
 }
 
 @media (max-height: 760px) {
+
   html[data-screen="phone"] .nav-toggle,
   html[data-screen="phone"] .lang-switch {
     top: 0.375rem;

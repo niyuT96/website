@@ -15,86 +15,120 @@
 
 <body>
   <div class="page">
-    <header class="hero" id="home">
-      <nav class="nav">
-        <div class="logo" data-site-text="logo">NY</div>
-        <div class="nav-links" id="primary-nav">
-          <a href="#projects" data-site-text="navProjects">Projects</a>
-          <a href="#experience" data-site-text="navExperience">Experience</a>
-          <a href="#education" data-site-text="navEducation">Education</a>
-          <a href="#skills" data-site-text="navSkills">Languages & Skills</a>
-          <a href="#contact" data-site-text="navContacts">Contacts</a>
-        </div>
-        <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false">
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-label">Menu</span>
-        </button>
-        <div class="lang-switch" aria-label="Language switch">
-          <button type="button" class="lang-button" data-lang="de" aria-pressed="false">DE</button>
-          <button type="button" class="lang-button" data-lang="en" aria-pressed="false">EN</button>
-        </div>
-      </nav>
-      <div class="hero-content">
-        <div class="hero-text">
-          <p class="eyebrow" data-site-text="heroEyebrow">Hello, I'm Niyu Tong</p>
-          <h1 data-site-text="heroTitle">Web Developer & Designer</h1>
-          <p class="lead" data-site-text="heroLead">
-            I build calm interfaces that turn complex ideas into crisp digital
-            experiences.
-          </p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#projects" data-site-text="heroCtaPrimary">View My Work</a>
-            <a class="btn ghost" href="#contact" data-site-text="heroCtaSecondary">Get In Touch</a>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-inner">
+          <div class="identity-block">
+            <a class="sidebar-home" href="#home" aria-label="Back to introduction">
+              <div class="logo" data-site-text="logo">NY</div>
+            </a>
           </div>
-          <div class="hero-metrics">
-            <div>
-              <strong data-site-text="heroMetricOneValue">8+</strong>
-              <span data-site-text="heroMetricOneLabel">Years Experience</span>
+
+          <nav class="nav sidebar-nav">
+            <div class="navigation-block">
+              <div class="nav-links" id="primary-nav">
+                <a href="#projects" data-site-text="navProjects">Projects</a>
+                <a href="#experience" data-site-text="navExperience">Experience</a>
+                <a href="#education" data-site-text="navEducation">Education</a>
+                <a href="#skills" data-site-text="navSkills">Languages & Skills</a>
+                <a href="#contact" data-site-text="navContacts">Contacts</a>
+              </div>
             </div>
-            <div>
-              <strong data-site-text="heroMetricTwoValue">42</strong>
-              <span data-site-text="heroMetricTwoLabel">Projects Delivered</span>
+
+            <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false">
+              <span class="nav-toggle-bar"></span>
+              <span class="nav-toggle-bar"></span>
+              <span class="nav-toggle-bar"></span>
+              <span class="nav-toggle-label">Menu</span>
+            </button>
+          </nav>
+
+          <div class="language-block">
+            <div class="lang-switch" aria-label="Language switch">
+              <button type="button" class="lang-button" data-lang="de" aria-pressed="false">DE</button>
+              <button type="button" class="lang-button" data-lang="en" aria-pressed="false">EN</button>
             </div>
           </div>
         </div>
-      </div>
-    </header>
+      </aside>
 
-    <div data-include="sections/projects.html"></div>
-    <div data-include="sections/experience.html"></div>
-    <div data-include="sections/skills.html"></div>
-    <div data-include="sections/education.html"></div>
+      <main class="main-content">
+        <header class="hero intro-section" id="home">
+          <div class="hero-content">
+            <div class="hero-text">
+              <p class="eyebrow" data-site-text="heroEyebrow">Hello, I'm Niyu Tong</p>
+              <h1 data-site-text="heroTitle">Web Developer & Designer</h1>
+              <p class="lead" data-site-text="heroLead">
+                I build calm interfaces that turn complex ideas into crisp digital
+                experiences.
+              </p>
+              <div class="hero-actions">
+                <a class="btn primary" href="#projects" data-site-text="heroCtaPrimary">View My Work</a>
+                <a class="btn ghost" href="#contact" data-site-text="heroCtaSecondary">Get In Touch</a>
+              </div>
+              <div class="hero-metrics">
+                <div>
+                  <strong data-site-text="heroMetricOneValue">8+</strong>
+                  <span data-site-text="heroMetricOneLabel">Years Experience</span>
+                </div>
+                <div>
+                  <strong data-site-text="heroMetricTwoValue">42</strong>
+                  <span data-site-text="heroMetricTwoLabel">Projects Delivered</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
 
+        <div class="content-stack">
+          <div data-include="sections/projects.html"></div>
 
-    <section class="section contact" id="contact">
-      <div class="section-head">
-        <h2 data-site-text="contactTitle">Contacts</h2>
-        <!-- <p data-site-text="contactLead">Let's build something elegant and efficient together.</p> -->
-      </div>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div>
-            <span class="label" data-site-text="availabilityLocationLabel">Location</span>
-            <strong data-site-text="availabilityLocationValue">Seattle, WA</strong>
-          </div>
-          <div>
-            <span class="label" data-site-text="availabilityEmailLabel">Email</span>
-            <strong data-site-text="availabilityEmailValue">hello@janedoe.studio</strong>
-          </div>
-          <div>
-            <span class="label" data-site-text="availabilityPhoneLabel">Phone</span>
-            <strong data-site-text="availabilityPhoneValue">+1 (555) 109-0021</strong>
-          </div>
+          <section class="profile-section" aria-label="Professional profile">
+            <div class="profile-layout">
+              <div class="profile-slot profile-slot-experience">
+                <div data-include="sections/experience.html"></div>
+              </div>
+
+              <div class="profile-slot profile-slot-skills">
+                <div data-include="sections/skills.html"></div>
+              </div>
+
+              <div class="profile-slot profile-slot-education">
+                <div data-include="sections/education.html"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="section contact" id="contact">
+            <div class="section-head">
+              <h2 data-site-text="contactTitle">Contacts</h2>
+              <!-- <p data-site-text="contactLead">Let's build something elegant and efficient together.</p> -->
+            </div>
+            <div class="contact-grid">
+              <div class="contact-card">
+                <div>
+                  <span class="label" data-site-text="availabilityLocationLabel">Location</span>
+                  <strong data-site-text="availabilityLocationValue">Seattle, WA</strong>
+                </div>
+                <div>
+                  <span class="label" data-site-text="availabilityEmailLabel">Email</span>
+                  <strong data-site-text="availabilityEmailValue">hello@janedoe.studio</strong>
+                </div>
+                <div>
+                  <span class="label" data-site-text="availabilityPhoneLabel">Phone</span>
+                  <strong data-site-text="availabilityPhoneValue">+1 (555) 109-0021</strong>
+                </div>
+              </div>
+            </div>
+            <a class="btn ghost resume-btn" href="files/Resume.pdf" download data-site-text="availabilityCta">Download Resume</a>
+          </section>
         </div>
-      </div>
-      <a class="btn ghost resume-btn" href="files/Resume.pdf" download data-site-text="availabilityCta">Download Resume</a>
-    </section>
+      </main>
+    </div>
 
-  <footer class="footer">
-    <p data-site-text="footerText">(c) 2025 Niyu Tong. Crafted with clarity and intention.</p>
-  </footer>
+    <footer class="footer">
+      <p data-site-text="footerText">(c) 2025 Niyu Tong. Crafted with clarity and intention.</p>
+    </footer>
   </div>
 
   <script src="scripts.js" defer></script>
